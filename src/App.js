@@ -8,12 +8,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 function App() {
     return (
         <div className="App">
-            {/* <Products /> */}
-            {/* <Sign /> */}
             <Router>
                 <div>
-                    <Route exact path="/" render={ () => <Products />} />
-                    <Route path="/Sign" render={ () => <Sign /> } />
+                    <Route exact path="/" component={Products} />
+                    <Route path="/Sign" component={Sign} />
                 </div>
             </Router>
         </div>
