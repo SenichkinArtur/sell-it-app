@@ -1,0 +1,33 @@
+.App {
+    background:#eee6e3;
+}
+.products {
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+.products__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #00b3be;
+    padding: 5px 15px;
+    color: #fff;
+}
+.products__item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.products__img {
+    width: 100%;
+}
+.products__title {
+    font-size: 18px;
+    margin: 0;
+    padding: 5px 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .products {
+        margin-top: 40px;
+    }
+}
