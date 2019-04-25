@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
-import SignIn from './SignIn/SignIn';
-import SignUp from './SignUp/SignUp';
+import SignIn from './SignTabs/SignIn';
+import SignUp from './SignTabs/SignUp';
 import './SignPage.css';
 
 import logo from "../../images/logo-sign.png";
