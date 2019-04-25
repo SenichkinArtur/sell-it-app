@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Products from "./componets/Products/Products";
-import Sign from "./componets/Sign/Sign";
+import SignPage from "./componets/SignPage/SignPage";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -11,7 +11,7 @@ function App() {
             <Router>
                 <div>
                     <Route exact path="/" component={Products} />
-                    <Route path="/Sign" component={Sign} />
+                    <Route path="/Sign" component={SignPage} />
                 </div>
             </Router>
         </div>

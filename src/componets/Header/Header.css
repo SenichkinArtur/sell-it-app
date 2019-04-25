@@ -37,31 +37,6 @@
     background-image: url(../../images/search-icon.png);
 }
 
-.user-block {
-    background: #00b3be;
-    color: #fff;
-    font-weight: 500;
-    width: 350px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 0;
-    padding: 15px;
-}
-.user-block__text {
-    margin: 0;
-}
-.user-block__link {
-    color: #4a4a4a;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-.user-block__link:hover {
-    color: #4a4a4a;
-    text-decoration: none;
-}
-
 @media only screen and (max-width: 767px) {
     .logo {
         text-align: left;
@@ -74,9 +49,5 @@
     }
     .search-block {
         order: 1;
-    }
-    .user-block {
-        position: static;
-        width: 100%;
     }
 }
