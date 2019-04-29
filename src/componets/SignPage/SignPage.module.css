@@ -3,7 +3,7 @@
     justify-content: flex-end;
     background: url(../../images/sign-bg.jpg) no-repeat 100% 100% #eee6e3;
 }
-.sign-block-wrap {
+.sign_block_wrap {
     background: #00b3be;
     color: #fff;
     min-height: calc(100vh - 50px);
@@ -12,17 +12,17 @@
     text-align: center;
 }
 
-.sign-block {
+.sign_block {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
-.tabs-select {
+.tabs_select {
     display: flex;
     justify-content: space-between;
     margin: 50px 0;
 }
-.tabs-select__button {
+.tabs_select__button {
     width: 45%;
     height: 35px;
     background: #f2f2f2;
@@ -31,10 +31,10 @@
     border: none;
     cursor: pointer;
 }
-.tabs-select__button:focus {
+.tabs_select__button:focus {
     outline: none;
 }
-.tabs-select__button_active {
+.tabs_select__button_active {
     border-bottom: 3px solid #91d763;
 }
     

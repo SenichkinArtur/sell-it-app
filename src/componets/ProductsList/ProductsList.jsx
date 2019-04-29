@@ -1,5 +1,5 @@
 import React from 'react';
-import './Products.css';
+import styles from './ProductsList.module.css';
 import Header from '../Header/Header';
 import Product from './Product/Product';
 import Footer from '../Footer/Footer';
@@ -9,7 +9,7 @@ import product2 from '../../images/product2.jpg';
 import product3 from '../../images/product3.jpg';
 import product4 from '../../images/product4.jpg';
 
-function Products() {
+function ProductsList() {
 
     let data = [
         {
@@ -34,7 +34,7 @@ function Products() {
     return (
         <div>
             <Header />
-            <div className="products">
+            <div className={styles.products}>
                 <div className="container">
                     <div className="row">
                     {
@@ -52,4 +52,4 @@ function Products() {
     )
 }
 
-export default Products;
+export default ProductsList;
