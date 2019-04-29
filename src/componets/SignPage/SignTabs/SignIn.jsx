@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../SignPage.module.css';
 
-function SignIn() {
+const SignIn = () => {
     return (
         <div className={styles.sign_block + styles.sign_block__sign_in}>        
             <form action="">
@@ -11,6 +11,6 @@ function SignIn() {
             </form>
         </div>
     )
-}
+};
 
 export default SignIn;

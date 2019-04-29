@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './Product.module.css';
 import eyeIcon from '../../../images/eye.png';
 
-function Product(props) {
-    let { data } = props;
+const Product = ({data}) => {
     return (
         <div className={styles.products__item + " col-lg-3 col-md-6"}>
             <img className={styles.products__img} src={data.image} alt="" />
@@ -13,6 +12,6 @@ function Product(props) {
             </div>
         </div>
     )
-}
+};
 
 export default Product;

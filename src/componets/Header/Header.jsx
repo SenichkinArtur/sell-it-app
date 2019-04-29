@@ -6,8 +6,7 @@ import styles from './Header.module.css';
 import logo from '../../images/logo.png';
 
 
-function Header() {
-    
+const Header = () => {
     return (
         <header className={styles.header}>
             <div className="container">
@@ -23,6 +22,6 @@ function Header() {
             </div>
         </header>
     )
-}
+};
 
 export default Header;
