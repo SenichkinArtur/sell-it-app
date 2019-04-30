@@ -4,11 +4,6 @@ import Header from '../Header/Header';
 import Product from './Product/Product';
 import Footer from '../Footer/Footer';
 
-import product1 from '../../images/product1.jpg';
-import product2 from '../../images/product2.jpg';
-import product3 from '../../images/product3.jpg';
-import product4 from '../../images/product4.jpg';
-
 class ProductList extends Component {
     state = {
         items: [],
@@ -28,27 +23,6 @@ class ProductList extends Component {
     
     render() {
         let { items } = this.state;
-        console.log(items);
-        
-        let data = [
-            {
-                "title": "Product Title",
-                "image": product1
-            },
-            {
-                "title": "Product Title",
-                "image": product2
-            },
-            {
-                "title": "Product Title",
-                "image": product3
-            },
-            {
-                "title": "Product Title",
-                "image": product4
-            },
-        ];
-        data = data.concat(data).concat(data);
 
         return (
             <div>
@@ -56,12 +30,13 @@ class ProductList extends Component {
                 <div className={styles.products}>
                     <div className="container">
                         <div className="row">
-                        {
-                            data.map((item, index) => {
+                        {items ?
+                              items.map((item, index) => {
                                 return (
                                     <Product data={item} key={index} />
                                 )
                             })
+                            : null
                         }
                         </div>
                     </div>
