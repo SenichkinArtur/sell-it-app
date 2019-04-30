@@ -3,35 +3,36 @@ import styles from './ProductsList.module.css';
 import Header from '../Header/Header';
 import Product from './Product/Product';
 import Footer from '../Footer/Footer';
+import { connect } from 'react-redux';
+import { fetchProducts } from '../../actions';
+
+const mapStateToProps = (state) => ({
+    productList: state.productList
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchProducts: () => {
+        dispatch(fetchProducts());
+    }
+});
 
 class ProductList extends Component {
-    state = {
-        items: [],
-    };
-
+    
     componentDidMount() {
-        fetch("http://light-it-04.tk/api/posters/")
-        .then(res => res.json())
-        .then(
-            (res) => {
-                this.setState({
-                    items: res.data
-                });
-            }
-        );
+        this.props.fetchProducts();
     }
     
     render() {
-        let { items } = this.state;
-        console.log(items);
+        let { productList } = this.props;
+        console.log(this.props);
         return (
             <div>
                 <Header />
                 <div className={styles.products}>
                     <div className="container">
                         <div className="row">
-                        {items ?
-                              items.map((item) => {
+                        {productList ?
+                              productList.map((item) => {
                                 return (
                                     <Product data={item} key={item.pk} />
                                 )
@@ -47,4 +48,4 @@ class ProductList extends Component {
     }
 }
 
-export default ProductList;
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
