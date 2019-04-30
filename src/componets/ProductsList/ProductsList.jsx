@@ -23,7 +23,7 @@ class ProductList extends Component {
     
     render() {
         let { items } = this.state;
-
+        console.log(items);
         return (
             <div>
                 <Header />
@@ -31,9 +31,9 @@ class ProductList extends Component {
                     <div className="container">
                         <div className="row">
                         {items ?
-                              items.map((item, index) => {
+                              items.map((item) => {
                                 return (
-                                    <Product data={item} key={index} />
+                                    <Product data={item} key={item.pk} />
                                 )
                             })
                             : null
