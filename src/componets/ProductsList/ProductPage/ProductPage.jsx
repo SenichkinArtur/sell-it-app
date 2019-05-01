@@ -5,10 +5,11 @@ import product1 from '../../../images/product1.jpg';
 import styles from './ProductPage.module.css';
 
 import { connect } from 'react-redux';
-import { fetchSingleProduct } from '../../../actions';
+import { fetchSingleProduct } from '../../../actions/fetchSingleProduct';
 
 const mapStateToProps = (state) => ({
-    singleProduct: state.singleProduct
+    singleProduct: state.singleProductReducer.singleProduct,
+    isLoaded: state.singleProductReducer.isLoaded
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,20 +25,19 @@ class ProductPage extends Component {
     }
 
     render() {
-        let { singleProduct } = this.props;
+        let { singleProduct, isLoaded } = this.props;
         return(
             <React.Fragment>
                 <Header />
-                {singleProduct ? 
-                    <div className="container">
-                        <div className="row">
+                <div className="container flex-grow">
+                    <div className="row">
+                        {isLoaded ?
                             <div className={styles.productPage}>
                                 <h3>{singleProduct.text}</h3>
                                 <div className={styles.productInfo}>
                                     <div className="col-lg-6">
                                         <img src={singleProduct.images.length !== 0 ? singleProduct.images[0].file : product1 } alt=""/>
                                     </div>
-                                    
                                     <div className={styles.productText + " col-lg-6"}>
                                         <p><span>Title: </span>{singleProduct.text}</p>
                                         <p><span>Theme: </span>{singleProduct.theme}</p>
@@ -46,10 +46,10 @@ class ProductPage extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            : null
+                        }
                     </div>
-                    : null
-                }
+                </div>
                 <Footer />
             </React.Fragment>
         )

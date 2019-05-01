@@ -5,10 +5,11 @@ import Product from './Product/Product';
 import Footer from '../Footer/Footer';
 
 import { connect } from 'react-redux';
-import { fetchProducts } from '../../actions';
+import { fetchProducts } from '../../actions/fetchProducts';
 
 const mapStateToProps = (state) => ({
-    productList: state.productList
+    productList: state.productsReducer.productList,
+    isLoaded: state.productsReducer.isLoaded
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,31 +24,33 @@ class ProductList extends Component {
         this.props.fetchProducts();
     }
 
+    mapProducts(productList) {
+        return productList.map((item) => {
+            return (
+                <Product data={item} key={item.pk} />
+            )
+        })
+    }
+
     render() {
-        let { productList } = this.props;
+        let { productList, isLoaded } = this.props;
         return (
-            <div>
+            <React.Fragment>
                 <Header />
-                <div className={styles.products}>
+                <div className={styles.products + " flex-grow"}>
                     <div className="container">
                         <div className="row">
-                        {productList ?
-                              productList.map((item) => {
-                                return (
-                                    <Product data={item} key={item.pk} />
-                                )
-                            })
+                        {isLoaded ?
+                            this.mapProducts(productList)
                             : null
                         }
                         </div>
                     </div>
                 </div>
                 <Footer />
-            </div>
+            </React.Fragment>
         )
     }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
-
-// export default ProductList;

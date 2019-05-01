@@ -10,11 +10,11 @@ const App = () => {
     return (
         <div className="App">
             <Router>
-                <div>
+                <React.Fragment>
                     <Route exact path="/"component={ProductsList} />
                     <Route path="/Sign" component={SignPage} />
                     <Route path="/products/:productId" render={({ match }) => (<ProductPage productId={Number(match.params.productId)} />)} />
-                </div>
+                </React.Fragment>
             </Router>
         </div>
     )
