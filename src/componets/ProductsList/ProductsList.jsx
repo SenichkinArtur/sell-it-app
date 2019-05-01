@@ -3,6 +3,7 @@ import styles from './ProductsList.module.css';
 import Header from '../Header/Header';
 import Product from './Product/Product';
 import Footer from '../Footer/Footer';
+
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions';
 
@@ -17,14 +18,13 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class ProductList extends Component {
-    
+
     componentDidMount() {
         this.props.fetchProducts();
     }
-    
+
     render() {
         let { productList } = this.props;
-        console.log(this.props);
         return (
             <div>
                 <Header />
@@ -49,3 +49,5 @@ class ProductList extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
+
+// export default ProductList;

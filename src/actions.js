@@ -10,3 +10,18 @@ export const fetchProducts = () => dispatch => {
         }
     )
 }
+
+export const fetchSingleProduct = (id) => dispatch => {
+    let url = `http://light-it-04.tk/api/posters/${id}/`;
+    fetch(url)
+    .then(res => res.json())
+    .then(
+        (res) => {
+            console.log(res);
+            dispatch({
+                type: "FETCH_SINGLE_PRODUCT",
+                payload: res
+            })
+        }
+    )
+}
