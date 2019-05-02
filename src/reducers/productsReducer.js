@@ -11,10 +11,14 @@ export default function productsReducer(state = initialState, action) {
                 isLoaded: false
             }
         case "FETCH_PRODUCTS": 
-        return { 
-            productList: action.payload,
-            isLoaded: true
-        }
+            return { 
+                productList: action.payload,
+                isLoaded: true
+            }
+        case "FETCH_PRODUCTS_ERROR":
+            return {
+                productList: []
+            }
 
         default:
             return state;

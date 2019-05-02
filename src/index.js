@@ -8,8 +8,13 @@ import reducers from "./reducers/index";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { logger } from './Middlewares/logger';
+import createSagaMiddleware from 'redux-saga'
+import sagas from './sagas/products';
 
-const store = createStore(reducers, composeWithDevTools(applyMiddleware(reduxThunk, logger)));
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(reduxThunk, logger, sagaMiddleware)));
+sagaMiddleware.run(sagas);
 
 ReactDOM.render(
     <Provider store={store}>

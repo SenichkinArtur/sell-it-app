@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from '../SignPage.module.css';
+import { reduxForm } from 'redux-form';
 
-const SignIn = () => {
+
+let SignIn = () => {
     return (
         <div className={styles.sign_block + styles.sign_block__sign_in}>        
             <form action="">
@@ -12,5 +14,9 @@ const SignIn = () => {
         </div>
     )
 };
+
+SignIn = reduxForm({
+    form: "signin"
+})(SignIn);
 
 export default SignIn;

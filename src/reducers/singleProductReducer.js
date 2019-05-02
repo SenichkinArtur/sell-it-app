@@ -16,6 +16,11 @@ export default function singleProductReducer(state = initialState, action) {
                 singleProduct: action.payload,
                 isLoaded: true
             }
+        
+        case "FETCH_SINGLE_PRODUCT_ERROR": 
+            return {
+                singleProduct: null
+            }
 
         default:
             return state;

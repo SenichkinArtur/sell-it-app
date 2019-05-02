@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const fetchSingleProduct = (id) => dispatch => {
+export const fetchSingleProduct = (id) => (dispatch) => {
     dispatch({
         type: "FETCH_SINGLE_PRODUCT_ATTEMPT",
         payload: false,
@@ -22,4 +22,7 @@ export const fetchSingleProduct = (id) => dispatch => {
             })
         }
     )
+    // return {
+    //     type: "FETCH_SINGLE_PRODUCT_ATTEMPT",
+    // }
 }
