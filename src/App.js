@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProductsList from "./componets/ProductsList/ProductsList";
 import ProductPage from "./componets/ProductsList/ProductPage/ProductPage";
 import SignPage from "./componets/SignPage/SignPage";
@@ -10,11 +10,11 @@ const App = () => {
     return (
         <div className="App">
             <Router>
-                <React.Fragment>
+                <Switch>
                     <Route exact path="/"component={ProductsList} />
                     <Route path="/Sign" component={SignPage} />
                     <Route path="/products/:productId" render={({ match }) => (<ProductPage productId={Number(match.params.productId)} />)} />
-                </React.Fragment>
+                </Switch>
             </Router>
         </div>
     )

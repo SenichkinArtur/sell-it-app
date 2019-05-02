@@ -3,7 +3,7 @@ import axios from 'axios';
 export const fetchProducts = () => dispatch => {
     dispatch({
         type: "FETCH_PRODUCTS_ATTEMPT",
-        payload: false
+        payload: false,
     })
 
     axios.get("http://light-it-04.tk/api/posters/")
@@ -11,7 +11,10 @@ export const fetchProducts = () => dispatch => {
         (res) => {
             dispatch({
                 type: "FETCH_PRODUCTS",
-                payload: res.data.data
+                payload: res.data.data,
+                meta: {
+                    printLog: true
+                }
             })
         }
     )
