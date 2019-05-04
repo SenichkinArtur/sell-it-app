@@ -8,8 +8,7 @@ import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/fetchProducts';
 
 const mapStateToProps = (state) => ({
-    productList: state.productsReducer.productList,
-    isLoaded: state.productsReducer.isLoaded
+    productList: state.productsReducer.productList
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -33,17 +32,17 @@ class ProductList extends Component {
     }
 
     render() {
-        let { productList, isLoaded } = this.props;
+        let { productList } = this.props;
         return (
             <React.Fragment>
                 <Header />
                 <div className={styles.products + " flex-grow"}>
                     <div className="container">
                         <div className="row">
-                        {isLoaded ?
-                            this.mapProducts(productList)
-                            : null
-                        }
+                            {productList ?
+                                this.mapProducts(productList)
+                                : null
+                            }
                         </div>
                     </div>
                 </div>

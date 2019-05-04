@@ -8,8 +8,7 @@ import { connect } from 'react-redux';
 import { fetchSingleProduct } from '../../../actions/fetchSingleProduct';
 
 const mapStateToProps = (state) => ({
-    singleProduct: state.singleProductReducer.singleProduct,
-    isLoaded: state.singleProductReducer.isLoaded
+    singleProduct: state.productsReducer.singleProduct
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,13 +24,13 @@ class ProductPage extends Component {
     }
 
     render() {
-        let { singleProduct, isLoaded } = this.props;
+        let { singleProduct } = this.props;
         return(
             <React.Fragment>
                 <Header />
                 <div className="container flex-grow">
                     <div className="row">
-                        {isLoaded ?
+                        {singleProduct ?
                             <div className={styles.productPage}>
                                 <h3>{singleProduct.text}</h3>
                                 <div className={styles.productInfo}>

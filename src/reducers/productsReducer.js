@@ -1,23 +1,43 @@
 const initialState = {
     productList: [],
-    isLoaded: false
+    singleProduct: null,
 };
 
 export default function productsReducer(state = initialState, action) {
     switch(action.type) {
         case "FETCH_PRODUCTS_REQUEST": 
             return {
+                ...state,
                 productList: [],
-                isLoaded: false
             }
+
         case "FETCH_PRODUCTS_SUCCESS": 
-            return { 
+            return {
+                ...state,
                 productList: action.payload,
-                isLoaded: true
             }
+
         case "FETCH_PRODUCTS_ERROR":
             return {
-                productList: []
+                ...state,
+            }
+
+        
+        case "FETCH_SINGLE_PRODUCT_REQUEST":
+            return { 
+                ...state,
+                singleProduct: null,
+            }
+
+        case "FETCH_SINGLE_PRODUCT_SUCCESS":
+            return {
+                ...state,
+                singleProduct: action.payload,
+            }
+        
+        case "FETCH_SINGLE_PRODUCT_ERROR":
+            return {
+                ...state,
             }
 
         default:
