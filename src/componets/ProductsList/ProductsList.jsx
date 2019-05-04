@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/fetchProducts';
 
 const mapStateToProps = (state) => ({
-    productList: state.productsReducer.productList
+    productList: state.productsReducer.productList,
+    searchValue: state.productsReducer.searchValue
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,16 +24,18 @@ class ProductList extends Component {
         this.props.fetchProducts();
     }
 
-    mapProducts(productList) {
+    mapProducts(productList, searchValue) {
         return productList.map((item) => {
             return (
-                <Product data={item} key={item.pk} />
+                searchValue.length === 0 || (item.text !== null && item.text.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1) ?
+                    <Product data={item} key={item.pk} />
+                : null
             )
         })
     }
 
     render() {
-        let { productList } = this.props;
+        let { productList, searchValue } = this.props;
         return (
             <React.Fragment>
                 <Header />
@@ -40,7 +43,7 @@ class ProductList extends Component {
                     <div className="container">
                         <div className="row">
                             {productList ?
-                                this.mapProducts(productList)
+                                this.mapProducts(productList, searchValue)
                                 : null
                             }
                         </div>

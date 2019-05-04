@@ -11,7 +11,7 @@ const Product = ({data}) => {
                 <img className={styles.products__img} src={data.images.length !== 0 ? data.images[0].file : product1 } alt="" />
             </div>
             <Link to={`/products/${data.pk}`} className={styles.products__info}>
-                <h5 className={styles.products__title}>Product Text</h5>
+                <h5 className={styles.products__title}>{data.text}</h5>
                 <img src={eyeIcon} alt="" />
             </Link>
         </div>

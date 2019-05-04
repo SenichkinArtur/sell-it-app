@@ -19,6 +19,8 @@
     font-size: 18px;
     margin: 0;
     padding: 5px 0;
+    height: 30px;
+    overflow: hidden;
 }
 .img_wrap {
     height: 160px;

@@ -1,6 +1,7 @@
 const initialState = {
     productList: [],
     singleProduct: null,
+    searchValue: ""
 };
 
 export default function productsReducer(state = initialState, action) {
@@ -38,6 +39,12 @@ export default function productsReducer(state = initialState, action) {
         case "FETCH_SINGLE_PRODUCT_ERROR":
             return {
                 ...state,
+            }
+
+        case "SEARCH_VALUE_CHANGE":
+            return {
+                ...state,
+                searchValue: action.payload
             }
 
         default:
