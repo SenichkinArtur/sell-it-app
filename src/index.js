@@ -7,7 +7,7 @@ import { applyMiddleware, createStore } from "redux";
 import reducers from "./reducers/index";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { logger } from './Middlewares/logger';
+import { logger } from './middlewares/logger';
 import createSagaMiddleware from 'redux-saga'
 import sagas from './sagas/products';
 

@@ -1,5 +1,5 @@
-export const fetchProducts = () => () => {
+export const fetchProducts = () => {
     return {
-        type: "FETCH_PRODUCTS_ATTEMPT",
+        type: "FETCH_PRODUCTS_REQUEST"
     }
 }

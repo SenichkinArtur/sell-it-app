@@ -5,13 +5,12 @@ const initialState = {
 
 export default function singleProductReducer(state = initialState, action) {
     switch(action.type) {
-        case "FETCH_SINGLE_PRODUCT_ATTEMPT":
-        return { 
-            singleProduct: null,
-            isLoaded: action.payload
-        }
+        case "FETCH_SINGLE_PRODUCT_REQUEST":
+            return { 
+                productId: action.payload
+            }
 
-        case "FETCH_SINGLE_PRODUCT": 
+        case "FETCH_SINGLE_PRODUCT_SUCCESS": 
             return { 
                 singleProduct: action.payload,
                 isLoaded: true

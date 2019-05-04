@@ -5,12 +5,12 @@ const initialState = {
 
 export default function productsReducer(state = initialState, action) {
     switch(action.type) {
-        case "FETCH_PRODUCTS_ATTEMPT": 
+        case "FETCH_PRODUCTS_REQUEST": 
             return {
                 productList: [],
                 isLoaded: false
             }
-        case "FETCH_PRODUCTS": 
+        case "FETCH_PRODUCTS_SUCCESS": 
             return { 
                 productList: action.payload,
                 isLoaded: true
