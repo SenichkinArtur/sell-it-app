@@ -28,6 +28,6 @@ function* fetchSingleProduct(action) {
     }
 }
 
-export default function* rootSaga() {
+export default function* productSagas() {
     yield all([ watchFetchProducts(), watchFetchSingleProduct() ]);
 }

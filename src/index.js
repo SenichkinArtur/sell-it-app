@@ -8,7 +8,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { logger } from './middlewares/logger';
 import createSagaMiddleware from 'redux-saga'
-import sagas from './sagas/products';
+import sagas from './sagas/rootSaga';
 
 
 const sagaMiddleware = createSagaMiddleware();

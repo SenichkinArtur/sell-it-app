@@ -22,6 +22,38 @@
     color: #4a4a4a;
     text-decoration: none;
 }
+.user_login {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    width: 100%;
+}
+.user_login_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.user_login_link:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.user_login_link img {
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.login_test {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    cursor: pointer;
+}
+.logout_icon {
+    cursor: pointer;
+}
+
 
 @media only screen and (max-width: 500px) {
     .user_block {
