@@ -32,7 +32,7 @@ const UserBlock = ({ isLogin, userLogin, userLogout }) => {
         <React.Fragment>
             <div className={styles.user_block}>
                 {!isLogin ?
-                    <p className={styles.user_block__text}> Welcome, <Link to="/sign" className={styles.user_block__link}>login</Link> or <Link to="/sign" className={styles.user_block__link}> register </Link> for start !</p>
+                    <p className={styles.user_block__text}> Welcome, <Link to="/sign-in" className={styles.user_block__link}>login</Link> or <Link to="/sign-up" className={styles.user_block__link}> register </Link> for start !</p>
                     : 
                     <div className={styles.user_login}>
                         <Link to={path} className={styles.user_login_link}>

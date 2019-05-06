@@ -30,9 +30,14 @@
     outline: none;
     border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.tabs_select__button:focus {
+.tabs_select__button:focus, .tabs_select__button:hover {
     outline: none;
+    text-decoration: none;
+    color: #4a4a4a;
 }
 .tabs_select__button_active {
     border-bottom: 3px solid #91d763;

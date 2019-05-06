@@ -13,9 +13,10 @@ const App = () => {
             <Router>
                 <Switch>
                     <Route exact path="/"component={ProductsList} />
-                    <Route path="/sign" component={SignPage} />
+                    <Route path="/sign-in" render={ () => (<SignPage activeTab={"signin"} />) }/>
+                    <Route path="/sign-up" render={ () => (<SignPage activeTab={"signup"} />) }/>
                     <Route path="/products/:productId" render={({ match }) => (<ProductPage productId={Number(match.params.productId)} />)} />
-                    <Route exact path="/userdetails/:userId" render={({ match }) => (<UserPage userId={match.params.userId} />)} />
+                    <Route path="/userdetails/:userId" render={({ match }) => (<UserPage userId={match.params.userId} />)} />
                 </Switch>
             </Router>
         </div>
