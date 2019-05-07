@@ -45,7 +45,7 @@
     
 .form__input {
     width: 100%;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
     height: 35px;
     background: transparent;
     color: #fff;
@@ -61,6 +61,13 @@
     color: #4a4a4a;
     background: #f2f2f2;
     cursor: pointer;
+}
+
+.form__input_error {
+    color: #b70808;
+    height: 35px;
+    display: flex;
+    font-weight: 500;
 }
 
 @media only screen and (max-width: 767px) {

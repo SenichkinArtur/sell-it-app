@@ -7,6 +7,9 @@ import styles from './SignPage.module.css';
 import logo from "../../images/logo-sign.png";
 
 const SignPage = ({ activeTab }) => {
+    const handleSubmit = (values) => {
+        console.log(values);
+    };
     return (
         <React.Fragment>
             <section className={styles.main}>
@@ -18,9 +21,9 @@ const SignPage = ({ activeTab }) => {
                     </div>
                     {
                         activeTab === "signin" ?
-                            <SignIn />
+                            <SignIn onSubmit={handleSubmit} />
                         :
-                            <SignUp />
+                            <SignUp onSubmit={handleSubmit} />
                     }
                 </div>
             </section>
