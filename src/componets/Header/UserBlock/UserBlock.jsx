@@ -22,14 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
 const UserBlock = ({ isLogin, userLogin, userLogout }) => {
     let userId = 1;
     let path = `/userdetails/${userId}`;
-    const loginTest = () => {
-        userLogin();
-    };
-    const logoutTest = () => {
-        userLogout();
-    };
     return (
         <React.Fragment>
+            <Link to="/newproduct">Add new item</Link>
             <div className={styles.user_block}>
                 {!isLogin ?
                     <p className={styles.user_block__text}> Welcome, <Link to="/sign-in" className={styles.user_block__link}>login</Link> or <Link to="/sign-up" className={styles.user_block__link}> register </Link> for start !</p>
@@ -40,12 +35,12 @@ const UserBlock = ({ isLogin, userLogin, userLogout }) => {
                             <span>Kim Evans</span>
                         </Link>
                         <div>
-                            <img onClick={() => logoutTest()} className={styles.logout_icon} src={logoutIcon} alt=""/>
+                            <img onClick={userLogout} className={styles.logout_icon} src={logoutIcon} alt=""/>
                         </div>
                     </div>
                 }
             </div>
-            <button onClick={() => loginTest()} className={styles.login_test}>test login</button>
+            <button onClick={userLogin} className={styles.login_test}>test login</button>
         </React.Fragment>
     )
 };

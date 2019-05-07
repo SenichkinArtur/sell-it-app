@@ -4,6 +4,7 @@ import ProductsList from "./componets/ProductsList/ProductsList";
 import ProductPage from "./componets/ProductsList/ProductPage/ProductPage";
 import SignPage from "./componets/SignPage/SignPage";
 import UserPage from './componets/UserPage/UserPage';
+import NewProduct from './componets/ProductsList/NewProduct/NewProduct';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -17,6 +18,7 @@ const App = () => {
                     <Route path="/sign-up" render={ () => (<SignPage activeTab={"signup"} />) }/>
                     <Route path="/products/:productId" render={({ match }) => (<ProductPage productId={Number(match.params.productId)} />)} />
                     <Route path="/userdetails/:userId" render={({ match }) => (<UserPage userId={match.params.userId} />)} />
+                    <Route path="/newproduct" component={NewProduct} />
                 </Switch>
             </Router>
         </div>
