@@ -6,9 +6,18 @@ import SignUp from './SignTabs/SignUp';
 import styles from './SignPage.module.css';
 import logo from "../../images/logo-sign.png";
 
+import { connect } from 'react-redux';
+import { userLogin } from '../../actions/user';
+
+const mapDispatchToProps = (dispatch) => ({
+    userLogin: () => {
+        dispatch(userLogin());
+    },
+});
+
 const SignPage = ({ activeTab }) => {
     const handleSubmit = (values) => {
-        console.log(values);
+        userLogin(values);
     };
     return (
         <React.Fragment>
@@ -32,4 +41,4 @@ const SignPage = ({ activeTab }) => {
     )
 }
 
-export default SignPage;
+export default connect(mapDispatchToProps)(SignPage);

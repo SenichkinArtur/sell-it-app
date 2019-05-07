@@ -6,6 +6,7 @@ function* watchFetchProducts() {
 }
 
 function* fetchProducts() {
+    console.log("work products")
     try {
         const result = yield call(axios.get, "http://light-it-04.tk/api/posters/");
         yield put({type: "FETCH_PRODUCTS_SUCCESS", payload: result.data.data});

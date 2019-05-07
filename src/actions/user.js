@@ -1,6 +1,8 @@
-export const userLogin = () => {
+export const userLogin = (data) => {
+    console.log(data);
     return {
         type: "USER_LOGIN_REQUEST",
+        payload: data
     }
 }
 

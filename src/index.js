@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from "redux-devtools-extension";
 import { applyMiddleware, createStore } from "redux";
@@ -10,14 +11,21 @@ import { logger } from './middlewares/logger';
 import createSagaMiddleware from 'redux-saga'
 import sagas from './sagas/rootSaga';
 
+// import createHistory from 'history/createBrowserHistory';
+// import httpService from './api_client/interceptors';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(logger, sagaMiddleware)));
 sagaMiddleware.run(sagas);
 
+// const history = createHistory();
+// httpService.setupInterceptors(store, history);
+
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        {/* <Router history={history}> */}
+            <App />
+        {/* </Router> */}
     </Provider>,
  document.getElementById('root'));
 
