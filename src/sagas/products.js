@@ -1,14 +1,13 @@
-import axios from "axios";
-import { takeEvery, put, all, call } from 'redux-saga/effects';
-
+import { takeEvery, put, all } from 'redux-saga/effects';
+import { get } from '../api_client/base';
+                            
 function* watchFetchProducts() {
     yield takeEvery("FETCH_PRODUCTS_REQUEST", fetchProducts);
 }
 
 function* fetchProducts() {
-    console.log("work products")
     try {
-        const result = yield call(axios.get, "http://light-it-04.tk/api/posters/");
+        const result = yield get("/posters/");
         yield put({type: "FETCH_PRODUCTS_SUCCESS", payload: result.data.data});
     } catch(error) {
         yield put ({ type: "FETCH_PRODUCTS_ERROR", payload: error });
@@ -22,7 +21,7 @@ function* watchFetchSingleProduct() {
 
 function* fetchSingleProduct(action) {
     try {
-        const result = yield call(axios.get, `http://light-it-04.tk/api/posters/${action.payload}`);
+        const result = yield get(`/posters/${action.payload}`);
         yield put({type: "FETCH_SINGLE_PRODUCT_SUCCESS", payload: result.data});
     } catch(error) {
         yield put ({ type: "FETCH_SINGLE_PRODUCT_ERROR", payload: error });
