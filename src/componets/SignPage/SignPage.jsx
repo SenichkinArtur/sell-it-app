@@ -10,12 +10,14 @@ import { connect } from 'react-redux';
 import { userLogin } from '../../actions/user';
 
 const mapDispatchToProps = (dispatch) => ({
-    userLogin: () => {
-        dispatch(userLogin());
-    },
+    userLogin: (values) => {
+        dispatch(userLogin(values));
+    }
 });
 
-const SignPage = ({ activeTab }) => {
+
+
+const SignPage = ({ activeTab, userLogin }) => {
     const handleSubmit = (values) => {
         userLogin(values);
     };
@@ -41,4 +43,4 @@ const SignPage = ({ activeTab }) => {
     )
 }
 
-export default connect(mapDispatchToProps)(SignPage);
+export default connect(null, mapDispatchToProps)(SignPage);

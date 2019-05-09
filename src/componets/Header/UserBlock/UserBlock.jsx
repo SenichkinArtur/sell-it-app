@@ -11,8 +11,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    userLogin: () => {
-        dispatch(userLogin());
+    userLogin: (value) => {
+        dispatch(userLogin(value));
     },
     userLogout: () => {
         dispatch(userLogout());
@@ -40,7 +40,6 @@ const UserBlock = ({ isLogin, userLogin, userLogout }) => {
                     </div>
                 }
             </div>
-            <button onClick={userLogin} className={styles.login_test}>test login</button>
         </React.Fragment>
     )
 };

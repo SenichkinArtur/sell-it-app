@@ -48,13 +48,6 @@
     top:100px;
     right: 0;
 }
-
-.login_test {
-    position: absolute;
-    right: 20px;
-    top: 50px;
-    cursor: pointer;
-}
 .logout_icon {
     cursor: pointer;
 }
