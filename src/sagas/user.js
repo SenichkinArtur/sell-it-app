@@ -8,7 +8,8 @@ function* watchUserLogin() {
 function* userLogin(action) {
     try {
         const result = yield post('/login/', action.payload);
-        yield put({type: "USER_LOGIN_SUCCESS", payload: result});
+        localStorage.setItem('jwtToken', result.data.token);
+        yield put({type: "USER_LOGIN_SUCCESS", payload: result.data.user});
     } catch(error) {
         console.log(error);
         yield put ({ type: "USER_LOGIN_ERROR", payload: error });

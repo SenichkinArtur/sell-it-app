@@ -22,7 +22,8 @@ export default function userReducer(state = initialState, action) {
                 ...state,
             }
 
-        case "USER_LOGOUT": 
+        case "USER_LOGOUT":
+        localStorage.removeItem('jwtToken');
             return {
                 isLogin: false,
                 user: {}
