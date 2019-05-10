@@ -18,6 +18,21 @@ function* userLogin(action) {
     }
 }
 
+function* watchUserSignUp() {
+    yield takeEvery("USER_SIGN_UP_REQUEST", userSignUp);
+}
+
+function* userSignUp(action) {
+    try {
+        const result = yield post('/registration/', action.payload);
+        console.log('result: ', result);
+        yield put({ type: "USER_SIGN_UP_SUCCESS" });
+    } catch(error) {
+        console.log(error);
+        yield put ({ type: "USER_SIGN_UP_ERROR", payload: error });
+    }
+}
+
 export default function* userSagas() {
-    yield all([ watchUserLogin() ]);
+    yield all([ watchUserLogin(), watchUserSignUp() ]);
 }

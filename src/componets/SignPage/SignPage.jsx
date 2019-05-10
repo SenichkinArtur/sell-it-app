@@ -7,19 +7,25 @@ import styles from './SignPage.module.css';
 import logo from "../../images/logo-sign.png";
 
 import { connect } from 'react-redux';
-import { userLogin } from '../../actions/user';
+import { userLogin, userSignUp } from '../../actions/user';
 
 const mapDispatchToProps = (dispatch) => ({
     userLogin: (values) => {
         dispatch(userLogin(values));
+    },
+    userSignUp: (values) => {
+        dispatch(userSignUp(values));
     }
 });
 
 
 
-const SignPage = ({ activeTab, userLogin }) => {
-    const handleSubmit = (values) => {
+const SignPage = ({ activeTab, userLogin, userSignUp }) => {
+    const handleSignIn = (values) => {
         userLogin(values);
+    };
+    const handleSignUp = (values) => {
+        userSignUp(values);
     };
     return (
         <React.Fragment>
@@ -32,9 +38,9 @@ const SignPage = ({ activeTab, userLogin }) => {
                     </div>
                     {
                         activeTab === "signin" ?
-                            <SignIn onSubmit={handleSubmit} />
+                            <SignIn onSubmit={handleSignIn} />
                         :
-                            <SignUp onSubmit={handleSubmit} />
+                            <SignUp onSubmit={handleSignUp} />
                     }
                 </div>
             </section>

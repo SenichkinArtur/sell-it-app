@@ -22,6 +22,21 @@ export default function userReducer(state = initialState, action) {
                 ...state,
             }
 
+        case "USER_SIGN_UP_REQUEST":
+            return {
+                ...state,
+            }
+
+        case "USER_SIGN_UP_SUCCESS":
+            return {
+                ...state,
+            }
+
+        case "USER_SIGN_UP_ERROR":
+            return {
+                ...state,
+            }
+
         case "USER_LOGOUT":
             localStorage.removeItem('jwtToken');
             return {
