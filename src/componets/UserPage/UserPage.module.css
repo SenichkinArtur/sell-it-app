@@ -1,6 +1,7 @@
 .user_page {
     display: flex;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .user_page_image {

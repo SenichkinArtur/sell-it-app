@@ -4,35 +4,34 @@ import styles from './UserBlock.module.css';
 import userPhoto from '../../../images/user-photo.jpg';
 import logoutIcon from '../../../images/logout-icon.png';
 import { connect } from 'react-redux';
-import { userLogin, userLogout } from '../../../actions/user';
+import { userLogout } from '../../../actions/user';
 
 const mapStateToProps = (state) => ({
-    isLogin: state.userReducer.isLogin
+    isLogin: state.userReducer.isLogin,
+    userName: state.userReducer.user.username,
+    userId: state.userReducer.user.user_id
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    userLogin: (value) => {
-        dispatch(userLogin(value));
-    },
     userLogout: () => {
         dispatch(userLogout());
     }
 });
 
-const UserBlock = ({ isLogin, userLogin, userLogout }) => {
-    let userId = 1;
-    let path = `/userdetails/${userId}`;
+const UserBlock = ({ isLogin, userName, userId, userLogout }) => {
     return (
         <React.Fragment>
             <Link to="/newproduct">Add new item</Link>
             <div className={styles.user_block}>
                 {!isLogin ?
-                    <p className={styles.user_block__text}> Welcome, <Link to="/sign-in" className={styles.user_block__link}>login</Link> or <Link to="/sign-up" className={styles.user_block__link}> register </Link> for start !</p>
+                    <p className={styles.user_block__text}> 
+                        Welcome, <Link to="/sign-in" className={styles.user_block__link}>login</Link> or <Link to="/sign-up" className={styles.user_block__link}> register </Link> for start !
+                    </p>
                     : 
                     <div className={styles.user_login}>
-                        <Link to={path} className={styles.user_login_link}>
+                        <Link to={`/userdetails/${userId}`} className={styles.user_login_link}>
                             <img src={userPhoto} alt=""/>
-                            <span>Kim Evans</span>
+                            <span>{userName}</span>
                         </Link>
                         <div>
                             <img onClick={userLogout} className={styles.logout_icon} src={logoutIcon} alt=""/>

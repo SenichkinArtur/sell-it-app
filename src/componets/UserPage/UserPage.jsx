@@ -4,8 +4,14 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './UserPage.module.css';
 import userPhoto from '../../images/user-photo.jpg';
+import { connect } from 'react-redux';
 
-const UserPage = ({ userId }) => {
+const mapStateToProps = (state) => ({
+    user: state.userReducer.user
+})
+
+const UserPage = ({ user }) => {
+    console.log(user);
     return (
         <React.Fragment>
             <Header />
@@ -15,8 +21,8 @@ const UserPage = ({ userId }) => {
                             <div className={styles.user_page}>
                                 <img src={userPhoto} alt="" className={styles.user_page_image}/>
                                 <div className={styles.user_page_info}>
-                                    <p>User Name: <span>Qweqewqw Asdasd</span></p>
-                                    <p>User ID: <span> {userId} </span></p>
+                                    <p>User Name: <span>{user.username}</span></p>
+                                    <p>User ID: <span>{user.user_id}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -27,4 +33,4 @@ const UserPage = ({ userId }) => {
     )
 }
 
-export default UserPage;
+export default connect(mapStateToProps)(UserPage);
