@@ -16,7 +16,7 @@ const validate = values => {
     } else if (!/^(?=.*[a-zA-Z])(?=.*\d).*$/.test(values.password)) {
         errors.password = 'Must contain letters and numbers';
     } else if (!/^(?!.*\s).*$/.test(values.password)) {
-        errors.password = 'Cant contain whitespaces';
+        errors.password = 'Cannot contain whitespaces';
     }
     return errors;
 }

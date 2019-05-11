@@ -5,13 +5,15 @@ import Footer from '../Footer/Footer';
 import styles from './UserPage.module.css';
 import userPhoto from '../../images/user-photo.jpg';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    isLogin: state.userReducer.isLogin
 })
 
-const UserPage = ({ user }) => {
-    console.log(user);
+const UserPage = ({ user, isLogin }) => {
+    if (!isLogin) return <Redirect to='/' />;
     return (
         <React.Fragment>
             <Header />

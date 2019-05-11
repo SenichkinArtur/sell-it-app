@@ -13,8 +13,7 @@ function* userLogin(action) {
         let user = jwt.decode(result.data.token);
         yield put({type: "USER_LOGIN_SUCCESS", payload: user});
     } catch(error) {
-        console.log(error);
-        yield put ({ type: "USER_LOGIN_ERROR", payload: error });
+        yield put ({ type: "USER_LOGIN_ERROR", payload: error.response.data });
     }
 }
 
@@ -28,8 +27,7 @@ function* userSignUp(action) {
         console.log('result: ', result);
         yield put({ type: "USER_SIGN_UP_SUCCESS" });
     } catch(error) {
-        console.log(error);
-        yield put ({ type: "USER_SIGN_UP_ERROR", payload: error });
+        yield put ({ type: "USER_SIGN_UP_ERROR", payload: error.response.data });
     }
 }
 

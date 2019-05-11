@@ -1,6 +1,9 @@
 const initialState = {
     isLogin: false,
-    user: {}
+    signUpDone: false,
+    user: {},
+    signInError: null,
+    signUpError: null
 };
 
 export default function userReducer(state = initialState, action) {
@@ -14,27 +17,33 @@ export default function userReducer(state = initialState, action) {
         case "USER_LOGIN_SUCCESS":
             return {
                 isLogin: true,
-                user: action.payload
+                user: action.payload,
+                signUpDone: false
             }
 
         case "USER_LOGIN_ERROR":
             return {
                 ...state,
+                signInError: action.payload
             }
 
         case "USER_SIGN_UP_REQUEST":
             return {
                 ...state,
+                signUpDone: false
             }
 
         case "USER_SIGN_UP_SUCCESS":
             return {
                 ...state,
+                signUpDone: true
             }
 
         case "USER_SIGN_UP_ERROR":
             return {
                 ...state,
+                signUpDone: false,
+                signUpError: action.payload
             }
 
         case "USER_LOGOUT":

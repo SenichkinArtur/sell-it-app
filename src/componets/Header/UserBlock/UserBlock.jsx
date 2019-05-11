@@ -9,7 +9,8 @@ import { userLogout } from '../../../actions/user';
 const mapStateToProps = (state) => ({
     isLogin: state.userReducer.isLogin,
     userName: state.userReducer.user.username,
-    userId: state.userReducer.user.user_id
+    userId: state.userReducer.user.user_id,
+    userEmail: state.userReducer.user.email
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,7 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const UserBlock = ({ isLogin, userName, userId, userLogout }) => {
+const UserBlock = ({ isLogin, userName, userId, userLogout, userEmail }) => {
+
     return (
         <React.Fragment>
             <Link to="/newproduct">Add new item</Link>
@@ -31,7 +33,7 @@ const UserBlock = ({ isLogin, userName, userId, userLogout }) => {
                     <div className={styles.user_login}>
                         <Link to={`/userdetails/${userId}`} className={styles.user_login_link}>
                             <img src={userPhoto} alt=""/>
-                            <span>{userName}</span>
+                            <span>{userName || userEmail}</span>
                         </Link>
                         <div>
                             <img onClick={userLogout} className={styles.logout_icon} src={logoutIcon} alt=""/>
