@@ -6,6 +6,8 @@ import ProductPage from "./componets/ProductsList/ProductPage/ProductPage";
 import SignPage from "./componets/SignPage/SignPage";
 import UserPage from './componets/UserPage/UserPage';
 import NewProduct from './componets/ProductsList/NewProduct/NewProduct';
+import NotFound from './componets/Errors/NotFound';
+import ServerError from './componets/Errors/ServerError';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -49,6 +51,8 @@ const App = () => {
                         <Route path="/products/:productId" render={({ match }) => (<ProductPage productId={Number(match.params.productId)} />)} />
                         <Route path="/userdetails/:userId" render={({ match }) => (<UserPage userId={match.params.userId} />)} />
                         <Route path="/newproduct" component={NewProduct} />
+                        <Route path="/not-found" component={NotFound} />
+                        <Route path="/server-error" component={ServerError} />
                     </Switch>
                 </Router>
             </div>

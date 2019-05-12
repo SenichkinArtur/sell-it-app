@@ -18,6 +18,10 @@ export default {
             history.push('/not-found');
         }
 
+        if (error.response.status === 500) {
+            history.push('/server-error');
+        }
+
         return Promise.reject(error);
         });
     },
