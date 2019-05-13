@@ -3,6 +3,8 @@ import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
 import { Field, reduxForm } from 'redux-form';
 import styles from './NewProduct.module.css';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const renderField = ({ input, label, type }) => {
     return (
@@ -13,7 +15,12 @@ const renderField = ({ input, label, type }) => {
     )
 }
 
-const NewProduct = () => {
+const mapStateToProps = (state) => ({
+    isLogin: state.userReducer.isLogin
+})
+
+let NewProduct = ({ isLogin }) => {
+    if (!isLogin) return <Redirect to='/' />
     return (
         <React.Fragment>
             <Header />
@@ -39,6 +46,8 @@ const NewProduct = () => {
         </React.Fragment>
     )
 }
+
+NewProduct = connect(mapStateToProps)(NewProduct);
 
 export default reduxForm({
     form: 'newProduct',

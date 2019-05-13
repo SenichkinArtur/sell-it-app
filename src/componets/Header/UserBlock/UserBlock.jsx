@@ -20,10 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const UserBlock = ({ isLogin, userName, userId, userLogout, userEmail }) => {
-
     return (
         <React.Fragment>
-            <Link to="/newproduct">Add new item</Link>
+            <Link to="/new-product">Add new item</Link>
             <div className={styles.user_block}>
                 {!isLogin ?
                     <p className={styles.user_block__text}> 

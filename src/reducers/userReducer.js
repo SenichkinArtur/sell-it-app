@@ -18,7 +18,8 @@ export default function userReducer(state = initialState, action) {
             return {
                 isLogin: true,
                 user: action.payload,
-                signUpDone: false
+                signUpDone: false,
+                signInError: null
             }
 
         case "USER_LOGIN_ERROR":
@@ -36,7 +37,8 @@ export default function userReducer(state = initialState, action) {
         case "USER_SIGN_UP_SUCCESS":
             return {
                 ...state,
-                signUpDone: true
+                signUpDone: true,
+                signUpError: null
             }
 
         case "USER_SIGN_UP_ERROR":

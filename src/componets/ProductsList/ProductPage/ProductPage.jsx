@@ -4,11 +4,13 @@ import Footer from '../../Footer/Footer';
 import product1 from '../../../images/product1.jpg';
 import styles from './ProductPage.module.css';
 
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSingleProduct } from '../../../actions/fetchSingleProduct';
 
 const mapStateToProps = (state) => ({
-    singleProduct: state.productsReducer.singleProduct
+    singleProduct: state.productsReducer.singleProduct,
+    isLogin: state.userReducer.isLogin
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,7 +26,8 @@ class ProductPage extends Component {
     }
 
     render() {
-        let { singleProduct } = this.props;
+        let { singleProduct, isLogin } = this.props;
+        if (!isLogin) return <Redirect to='/' />
         return(
             <React.Fragment>
                 <Header />

@@ -1,0 +1,25 @@
+.unauth_wrap  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+    color: #4a4a4a;
+}
+.unauth_wrap h5 {
+    margin-bottom: 20px;
+}
+.unauth_wrap form div input{
+    width: 300px;
+    color: #00b3be;
+    border-color: #00b3be;
+}
+.unauth_wrap form div input::placeholder {
+    color: #00b3be;
+}
+
+.error_wrap {
+    color: #b70808;
+    font-weight: 500;
+}
