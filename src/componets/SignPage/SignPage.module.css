@@ -1,7 +1,7 @@
 .main {
     display: flex;
     justify-content: flex-end;
-    background: url(../../images/sign-bg.jpg) no-repeat 100% 100% #eee6e3;
+    background: url(../../assets/images/sign-bg.jpg) no-repeat 100% 100% #eee6e3;
 }
 .sign_block_wrap {
     background: #00b3be;

@@ -4,10 +4,10 @@ import Footer from '../Footer/Footer';
 import SignIn from './SignTabs/SignIn';
 import SignUp from './SignTabs/SignUp';
 import styles from './SignPage.module.css';
-import logo from "../../images/logo-sign.png";
+import logo from "../../assets/images/logo-sign.png";
 
 import { connect } from 'react-redux';
-import { userLogin, userSignUp } from '../../actions/user';
+import { userLogin, userSignUp, errorClear } from '../../actions/user';
 
 const mapStateToProps = (state) => ({
     isLogin: state.userReducer.isLogin,
@@ -22,11 +22,27 @@ const mapDispatchToProps = (dispatch) => ({
     },
     userSignUp: (values) => {
         dispatch(userSignUp(values));
+    },
+    errorClear: () => {
+        dispatch(errorClear());
     }
 });
 
-const SignPage = ({ activeTab, userLogin, userSignUp, isLogin, signUpDone, signInError, signUpError }) => {
+const ErrorRender = ({ error }) => {
+    let errorsArr = [];
+    for(let key in error) {
+        errorsArr.push(error[key])
+    }
+    return (
+        <div className={styles.error_wrap}>
+            {errorsArr.map((item, index) => {
+                return <p id="error" key={index}>{item}</p>
+            })}
+        </div>
+    )
+}
 
+const SignPage = ({ activeTab, userLogin, userSignUp, isLogin, signUpDone, signInError, signUpError, errorClear }) => {
     const handleSignIn = (values) => {
         userLogin(values);
     };
@@ -34,20 +50,6 @@ const SignPage = ({ activeTab, userLogin, userSignUp, isLogin, signUpDone, signI
     const handleSignUp = (values) => {
         userSignUp(values);
     };
-
-    const errorRender = (error) => {
-        let errorsArr = [];
-        for(let key in error) {
-            errorsArr.push(error[key])
-        }
-        return (
-            <div className={styles.error_wrap}>
-                {errorsArr.map((item, index) => {
-                    return <p key={index}>{item}</p>
-                })}
-            </div>
-        )
-    }
 
     if (isLogin) return <Redirect to='/' />;
 
@@ -57,22 +59,23 @@ const SignPage = ({ activeTab, userLogin, userSignUp, isLogin, signUpDone, signI
                 <div className={styles.sign_block_wrap}>
                     <Link to="/"><img src={logo} alt="" /></Link>
                     <div className={styles.tabs_select}>
-                        <Link to="/sign-in" className={`${styles.tabs_select__button} ${activeTab === "signin" ? styles.tabs_select__button_active : ""}`}>Sign In</Link>
-                        <Link to="/sign-up" className={`${styles.tabs_select__button} ${activeTab === "signup" ? styles.tabs_select__button_active : ""}`}>Sign Up</Link>
+                        <Link to="/sign-in" className={`${styles.tabs_select__button} ${activeTab === "signin" ? styles.tabs_select__button_active : ""}`} onClick={ () => errorClear() }>Sign In</Link>
+                        <Link to="/sign-up" className={`${styles.tabs_select__button} ${activeTab === "signup" ? styles.tabs_select__button_active : ""}`} onClick={ () => errorClear() }>Sign Up</Link>
                     </div>
-                    {activeTab === "signin" ?
 
+                    {activeTab === "signin" ?
                         <React.Fragment>
                             {signUpDone ? <p className={styles.registration_done}>Registration done! Please login</p> : null}
-                            {errorRender(signInError)}
+                            <ErrorRender error={signInError} />
                             <SignIn onSubmit={handleSignIn} />
                         </React.Fragment> 
                         :
                         <React.Fragment>
-                            {errorRender(signUpError)}
+                            <ErrorRender error={signUpError} />
                             <SignUp onSubmit={handleSignUp} />
                         </React.Fragment>
                     }
+
                 </div>
             </section>
             <Footer />

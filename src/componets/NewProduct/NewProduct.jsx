@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../../Header/Header';
-import Footer from '../../Footer/Footer';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import { Field, reduxForm } from 'redux-form';
 import styles from './NewProduct.module.css';
 import { connect } from 'react-redux';

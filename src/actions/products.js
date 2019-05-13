@@ -1,0 +1,19 @@
+export const fetchProducts = () => {
+    return {
+        type: "FETCH_PRODUCTS_REQUEST"
+    }
+}
+
+export const fetchSingleProduct = (id) => {
+    return {
+        type: "FETCH_SINGLE_PRODUCT_REQUEST",
+        payload: id
+    }    
+}
+
+export const searchValueChange = (value) => {
+    return {
+        type: "SEARCH_VALUE_CHANGE",
+        payload: value
+    }
+}

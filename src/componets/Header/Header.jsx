@@ -4,7 +4,7 @@ import UserBlock from './UserBlock/UserBlock';
 import Search from './Search/Search';
 
 import styles from './Header.module.css';
-import logo from '../../images/logo.png';
+import logo from '../../assets/images/logo.png';
 
 
 const Header = () => {

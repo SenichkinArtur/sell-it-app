@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styles from './ProductsList.module.css';
 import Header from '../Header/Header';
-import Product from './Product/Product';
+import Product from './Product';
 import Footer from '../Footer/Footer';
 
 import { connect } from 'react-redux';
-import { fetchProducts } from '../../actions/fetchProducts';
+import { fetchProducts } from '../../actions/products';
 
 const mapStateToProps = (state) => ({
     productList: state.productsReducer.productList,

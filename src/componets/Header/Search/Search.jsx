@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Search.module.css';
 import { connect } from 'react-redux';
-import { searchValueChange } from '../../../actions/search';
+import { searchValueChange } from '../../../actions/products';
 
 const mapStateToProps = (state) => ({
     searchValue: state.productsReducer.searchValue

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { BASE_URL } from '../app.config';
+
+const BASE_URL = "http://light-it-04.tk/api";
 
 const request = ({ method, url, data }) => {
     return axios({
@@ -20,6 +21,6 @@ export const post = (path, data) => {
     return request({
         method: 'POST',
         url: BASE_URL + path,
-        data: data
+        data
     });
 }

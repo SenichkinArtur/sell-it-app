@@ -1,5 +1,5 @@
-import { takeEvery, put, all } from 'redux-saga/effects';
-import { post } from '../api_client/base';
+import { takeEvery, put } from 'redux-saga/effects';
+import { signIn, signUp } from '../api_client/user';
 import jwt from 'jsonwebtoken';
 
 function* watchUserLogin() {
@@ -8,7 +8,7 @@ function* watchUserLogin() {
 
 function* userLogin(action) {
     try {
-        const result = yield post('/login/', action.payload);
+        const result = yield signIn(action.payload);
         localStorage.setItem('jwtToken', result.data.token);
         let user = jwt.decode(result.data.token);
         yield put({type: "USER_LOGIN_SUCCESS", payload: user});
@@ -23,7 +23,7 @@ function* watchUserSignUp() {
 
 function* userSignUp(action) {
     try {
-        const result = yield post('/registration/', action.payload);
+        const result = yield signUp(action.payload);
         console.log('result: ', result);
         yield put({ type: "USER_SIGN_UP_SUCCESS" });
     } catch(error) {
@@ -31,6 +31,4 @@ function* userSignUp(action) {
     }
 }
 
-export default function* userSagas() {
-    yield all([ watchUserLogin(), watchUserSignUp() ]);
-}
+export const userSagas = [ watchUserLogin(), watchUserSignUp() ];

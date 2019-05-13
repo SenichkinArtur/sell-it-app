@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './UserBlock.module.css';
-import userPhoto from '../../../images/user-photo.jpg';
-import logoutIcon from '../../../images/logout-icon.png';
+import userPhotoDefault from '../../../assets/images/user-photo.jpg';
+import logoutIcon from '../../../assets/images/logout-icon.png';
 import { connect } from 'react-redux';
 import { userLogout } from '../../../actions/user';
 
@@ -10,7 +10,8 @@ const mapStateToProps = (state) => ({
     isLogin: state.userReducer.isLogin,
     userName: state.userReducer.user.username,
     userId: state.userReducer.user.user_id,
-    userEmail: state.userReducer.user.email
+    userEmail: state.userReducer.user.email,
+    userAvatar: state.userReducer.user.avatar
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const UserBlock = ({ isLogin, userName, userId, userLogout, userEmail }) => {
+const UserBlock = ({ isLogin, userName, userId, userLogout, userEmail, userAvatar }) => {
     return (
         <React.Fragment>
             <Link to="/new-product">Add new item</Link>
@@ -31,7 +32,7 @@ const UserBlock = ({ isLogin, userName, userId, userLogout, userEmail }) => {
                     : 
                     <div className={styles.user_login}>
                         <Link to={`/userdetails/${userId}`} className={styles.user_login_link}>
-                            <img src={userPhoto} alt=""/>
+                            <img src={userAvatar || userPhotoDefault} alt=""/>
                             <span>{userName || userEmail}</span>
                         </Link>
                         <div>

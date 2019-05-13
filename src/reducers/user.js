@@ -54,6 +54,13 @@ export default function userReducer(state = initialState, action) {
                 isLogin: false,
                 user: {}
             }
+            
+        case "ERROR_CLEAR": 
+            return {
+                ...state,
+                signInError: null,
+                signUpError: null
+            }
 
         default:
             return state;

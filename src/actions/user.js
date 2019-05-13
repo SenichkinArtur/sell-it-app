@@ -17,3 +17,9 @@ export const userLogout = () => {
         type: "USER_LOGOUT",
     }
 }
+
+export const errorClear = () => {
+    return {
+        type: "ERROR_CLEAR"
+    }
+}
