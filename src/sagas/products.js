@@ -29,7 +29,7 @@ function* fetchSingleProduct(action) {
 }
 
 function* watchSearchProducts() {
-    yield takeEvery("SEARCH_VALUE_CHANGE", searchProducts);
+    yield takeEvery("SEARCH_PRODUCTS_REQUEST", searchProducts);
 }
 
 function* searchProducts(action) {

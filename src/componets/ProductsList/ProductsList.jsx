@@ -27,7 +27,7 @@ class ProductList extends Component {
     mapProducts(productList, searchValue) {
         return productList.map((item) => {
             return (
-                searchValue.length === 0 || (item.text !== null && item.text.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1) ?
+                searchValue.length === 0 || (item.theme !== null && item.theme.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1) ?
                     <Product data={item} key={item.pk} />
                 : null
             )

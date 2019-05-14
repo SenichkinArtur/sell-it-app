@@ -41,7 +41,7 @@ export default function productsReducer(state = initialState, action) {
                 ...state,
             }
 
-        case "SEARCH_VALUE_CHANGE":
+        case "SEARCH_PRODUCTS_REQUEST":
             return {
                 ...state,
                 searchValue: action.payload

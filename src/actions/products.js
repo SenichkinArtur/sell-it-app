@@ -13,7 +13,7 @@ export const fetchSingleProduct = (id) => {
 
 export const searchValueChange = (value) => {
     return {
-        type: "SEARCH_VALUE_CHANGE",
+        type: "SEARCH_PRODUCTS_REQUEST",
         payload: value
     }
 }
