@@ -15,6 +15,9 @@ if (localStorage.jwtToken) {
         let user = jwt.decode(res.data.token);
         store.dispatch({type: 'USER_LOGIN_SUCCESS', payload: user});
     })
+    .catch(() => {
+        store.dispatch({type: 'USER_LOGOUT'});
+    });
 }
 
 const App = () => {
