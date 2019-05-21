@@ -19,6 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
+
+
 class ProductPage extends Component {
 
     componentDidMount() {
@@ -57,5 +59,22 @@ class ProductPage extends Component {
         )
     }
 }
+
+// const ProductLog = (WrappedProduct) => {
+//     return class extends Component {
+//         componentWillReceiveProps(nextProps) {
+//             if (nextProps.singleProduct) {
+//                 console.log(nextProps.singleProduct.theme);
+//             }
+//         }
+//         render() {            
+//             return (
+//                 <WrappedProduct {...this.props}/>
+//             )
+//         }
+//     }
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(ProductLog(ProductPage));
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
