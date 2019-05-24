@@ -4,31 +4,43 @@ import Header from '../Header/Header';
 import Product from './Product';
 import Footer from '../Footer/Footer';
 
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/products';
 
-const mapStateToProps = (state) => ({
+interface Props {
+    productList: [],
+    searchValue: string,
+    fetchProducts: () => void,
+    productsReducer: {
+        productList: [],
+        searchValue: string
+    }
+}
+
+const mapStateToProps = (state: Props) => ({
     productList: state.productsReducer.productList,
     searchValue: state.productsReducer.searchValue
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
     fetchProducts: () => {
         dispatch(fetchProducts());
     }
 });
 
-class ProductList extends Component {
+class ProductList extends Component<Props> {
 
     componentDidMount() {
         this.props.fetchProducts();
     }
 
-    mapProducts(productList, searchValue) {
-        return productList.map((item) => {
+    mapProducts(productList: [], searchValue: string) {
+        return productList.map((item: any) => {
+            let { theme, pk } = item;
             return (
-                searchValue.length === 0 || (item.theme !== null && item.theme.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1) ?
-                    <Product data={item} key={item.pk} />
+                searchValue.length === 0 || (theme !== null && theme.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1) ?
+                    <Product data={item} key={pk} />
                 : null
             )
         })
@@ -46,7 +58,7 @@ class ProductList extends Component {
                                 this.mapProducts(productList, searchValue)
                                 : null
                             }
-                        </div>
+                        </div> 
                     </div>
                 </div>
                 <Footer />
