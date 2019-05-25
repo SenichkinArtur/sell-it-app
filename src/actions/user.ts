@@ -17,6 +17,7 @@ interface UserLoginError {
 
 interface UserSignUpRequest {
     type: typeof constants.USER_SIGN_UP_REQUEST;
+    payload: {}
 }
 
 interface UserSignUpSuccess {
@@ -68,7 +69,8 @@ export const userLoginError = (data: {}): UserLoginError => {
 
 export const userSignUpRequest = (): UserSignUpRequest => {
     return {
-        type: constants.USER_SIGN_UP_REQUEST
+        type: constants.USER_SIGN_UP_REQUEST,
+        payload: {}
     }
 }
 

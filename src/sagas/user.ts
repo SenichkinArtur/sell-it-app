@@ -1,12 +1,13 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import { signIn, signUp } from '../api_client/user';
+import { userLoginRequest, userSignUpRequest } from '../actions/user';
 import jwt from 'jsonwebtoken';
 
 function* watchUserLogin() {
     yield takeEvery("USER_LOGIN_REQUEST", userLogin);
 }
 
-function* userLogin(action) {
+function* userLogin(action: ReturnType<typeof userLoginRequest>) {
     try {
         const result = yield signIn(action.payload);
         localStorage.setItem('jwtToken', result.data.token);
@@ -21,10 +22,9 @@ function* watchUserSignUp() {
     yield takeEvery("USER_SIGN_UP_REQUEST", userSignUp);
 }
 
-function* userSignUp(action) {
+function* userSignUp(action: ReturnType<typeof userSignUpRequest>) {
     try {
-        const result = yield signUp(action.payload);
-        console.log('result: ', result);
+        yield signUp(action.payload);
         yield put({ type: "USER_SIGN_UP_SUCCESS" });
     } catch(error) {
         yield put ({ type: "USER_SIGN_UP_ERROR", payload: error.response.data });

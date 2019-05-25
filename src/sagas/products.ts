@@ -1,6 +1,7 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import { getProducts, getSingleProduct, getSearchProducts } from '../api_client/products';
-                            
+import { fetchSingleProduct, searchValueChange } from '../actions/products';
+
 function* watchFetchProducts() {
     yield takeEvery("FETCH_PRODUCTS_REQUEST", fetchProducts);
 }
@@ -16,10 +17,10 @@ function* fetchProducts() {
 
 
 function* watchFetchSingleProduct() {
-    yield takeEvery("FETCH_SINGLE_PRODUCT_REQUEST", fetchSingleProduct);
+    yield takeEvery("FETCH_SINGLE_PRODUCT_REQUEST", handleFetchSingleProduct);
 }
 
-function* fetchSingleProduct(action) {
+function* handleFetchSingleProduct(action: ReturnType<typeof fetchSingleProduct>) {
     try {
         const result = yield getSingleProduct(action.payload);
         yield put({type: "FETCH_SINGLE_PRODUCT_SUCCESS", payload: result.data});
@@ -29,10 +30,10 @@ function* fetchSingleProduct(action) {
 }
 
 function* watchSearchProducts() {
-    yield takeEvery("SEARCH_PRODUCTS_REQUEST", searchProducts);
+    yield takeEvery("SEARCH_PRODUCTS_REQUEST", handleSearchProducts);
 }
 
-function* searchProducts(action) {
+function* handleSearchProducts(action: ReturnType<typeof searchValueChange>) {
     try {
         const result = yield getSearchProducts(action.payload);
         yield put({type: "FETCH_PRODUCTS_SUCCESS", payload: result.data.data})
