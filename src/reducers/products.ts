@@ -1,47 +1,48 @@
+import { Action } from '../actions/products';
+import * as constants from '../constants/index';
+
 const initialState = {
     productList: [],
     singleProduct: null,
     searchValue: ""
 };
 
-export default function productsReducer(state = initialState, action) {
+export default function productsReducer(state = initialState, action: Action) {
     switch(action.type) {
-        case "FETCH_PRODUCTS_REQUEST": 
+        case constants.FETCH_PRODUCTS_REQUEST: 
             return {
                 ...state,
-                productList: [],
             }
 
-        case "FETCH_PRODUCTS_SUCCESS": 
+        case constants.FETCH_PRODUCTS_SUCCESS:
             return {
                 ...state,
                 productList: action.payload,
             }
 
-        case "FETCH_PRODUCTS_ERROR":
+        case constants.FETCH_PRODUCTS_ERROR:
             return {
                 ...state,
             }
 
-        
-        case "FETCH_SINGLE_PRODUCT_REQUEST":
+        case constants.FETCH_SINGLE_PRODUCT_REQUEST:
             return { 
                 ...state,
                 singleProduct: null,
             }
 
-        case "FETCH_SINGLE_PRODUCT_SUCCESS":
+        case constants.FETCH_SINGLE_PRODUCT_SUCCESS:
             return {
                 ...state,
                 singleProduct: action.payload,
             }
         
-        case "FETCH_SINGLE_PRODUCT_ERROR":
+        case constants.FETCH_SINGLE_PRODUCT_ERROR:
             return {
                 ...state,
             }
 
-        case "SEARCH_PRODUCTS_REQUEST":
+        case constants.SEARCH_PRODUCTS_REQUEST:
             return {
                 ...state,
                 searchValue: action.payload
