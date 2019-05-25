@@ -1,3 +1,6 @@
+import { UserAction } from '../actions/user';
+import * as constants from '../constants/index';
+
 const initialState = {
     isLogin: false,
     signUpDone: false,
@@ -6,15 +9,15 @@ const initialState = {
     signUpError: null
 };
 
-export default function userReducer(state = initialState, action) {
+export default function userReducer(state = initialState, action: UserAction) {
     switch(action.type) {
-        case "USER_LOGIN_REQUEST":
+        case constants.USER_LOGIN_REQUEST:
             return {
                 isLogin: false,
                 user: action.payload
             }
 
-        case "USER_LOGIN_SUCCESS":
+        case constants.USER_LOGIN_SUCCESS:
             return {
                 isLogin: true,
                 user: action.payload,
@@ -22,40 +25,40 @@ export default function userReducer(state = initialState, action) {
                 signInError: null
             }
 
-        case "USER_LOGIN_ERROR":
+        case constants.USER_LOGIN_ERROR:
             return {
                 ...state,
                 signInError: action.payload
             }
 
-        case "USER_SIGN_UP_REQUEST":
+        case constants.USER_SIGN_UP_REQUEST:
             return {
                 ...state,
                 signUpDone: false
             }
 
-        case "USER_SIGN_UP_SUCCESS":
+        case constants.USER_SIGN_UP_SUCCESS:
             return {
                 ...state,
                 signUpDone: true,
                 signUpError: null
             }
 
-        case "USER_SIGN_UP_ERROR":
+        case constants.USER_SIGN_UP_ERROR:
             return {
                 ...state,
                 signUpDone: false,
                 signUpError: action.payload
             }
 
-        case "USER_LOGOUT":
+        case constants.USER_LOGOUT:
             localStorage.removeItem('jwtToken');
             return {
                 isLogin: false,
                 user: {}
             }
             
-        case "ERROR_CLEAR": 
+        case constants.ERROR_CLEAR: 
             return {
                 ...state,
                 signInError: null,

@@ -6,7 +6,7 @@ import styles from './UnauthorizedPage.module.css';
 import SignIn from '../SignPage/SignTabs/SignIn';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { userLogin } from '../../actions/user';
+import { userLoginRequest } from '../../actions/user';
 
 
 const mapStateToProps = (state) => ({
@@ -15,8 +15,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    userLogin: (values) => {
-        dispatch(userLogin(values));
+    userLoginRequest: (values) => {
+        dispatch(userLoginRequest(values));
     }
 });
 
@@ -34,9 +34,9 @@ const ErrorRender = ({ error }) => {
     )
 }
 
-const UnauthorizedPage = ({ userLogin, isLogin, location, signInError }) => {
+const UnauthorizedPage = ({ userLoginRequest, isLogin, location, signInError }) => {
     const handleSignIn = (values) => {
-        userLogin(values);
+        userLoginRequest(values);
     };
 
     if (isLogin) return <Redirect to={location.state.path} />

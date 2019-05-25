@@ -7,7 +7,7 @@ import styles from './SignPage.module.css';
 import logo from "../../assets/images/logo-sign.png";
 
 import { connect } from 'react-redux';
-import { userLogin, userSignUp, errorClear } from '../../actions/user';
+import { userLoginRequest, userSignUpRequest, errorClear } from '../../actions/user';
 
 const mapStateToProps = (state) => ({
     isLogin: state.userReducer.isLogin,
@@ -17,11 +17,11 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    userLogin: (values) => {
-        dispatch(userLogin(values));
+    userLoginRequest: (values) => {
+        dispatch(userLoginRequest(values));
     },
-    userSignUp: (values) => {
-        dispatch(userSignUp(values));
+    userSignUpRequest: (values) => {
+        dispatch(userSignUpRequest(values));
     },
     errorClear: () => {
         dispatch(errorClear());
@@ -42,13 +42,13 @@ const ErrorRender = ({ error }) => {
     )
 }
 
-const SignPage = ({ activeTab, userLogin, userSignUp, isLogin, signUpDone, signInError, signUpError, errorClear }) => {
+const SignPage = ({ activeTab, userLoginRequest, userSignUpRequest, isLogin, signUpDone, signInError, signUpError, errorClear }) => {
     const handleSignIn = (values) => {
-        userLogin(values);
+        userLoginRequest(values);
     };
 
     const handleSignUp = (values) => {
-        userSignUp(values);
+        userSignUpRequest(values);
     };
 
     if (isLogin) return <Redirect to='/' />;
