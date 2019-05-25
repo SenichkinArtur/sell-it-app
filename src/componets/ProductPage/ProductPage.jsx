@@ -35,7 +35,7 @@ class ProductPage extends Component {
                 <Header />
                 <div className="container flex-grow">
                     <div className="row">
-                        {singleProduct ?
+                        {Object.keys(singleProduct).length !== 0 && singleProduct.constructor === Object ?
                             <div className={styles.productPage}>
                                 <h3>{singleProduct.text}</h3>
                                 <div className={styles.productInfo}>

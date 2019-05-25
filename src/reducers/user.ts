@@ -1,28 +1,38 @@
 import { UserAction } from '../actions/user';
 import * as constants from '../constants/index';
 
-const initialState = {
+interface UserState {
+    isLogin: boolean;
+    signUpDone: boolean;
+    user: {};
+    signInError: {};
+    signUpError: {};
+}
+
+const initialState: UserState = {
     isLogin: false,
     signUpDone: false,
     user: {},
-    signInError: null,
-    signUpError: null
+    signInError: {},
+    signUpError: {}
 };
 
-export default function userReducer(state = initialState, action: UserAction) {
+export default function userReducer(state = initialState, action: UserAction): UserState {
     switch(action.type) {
         case constants.USER_LOGIN_REQUEST:
             return {
+                ...state,
                 isLogin: false,
                 user: action.payload
             }
 
         case constants.USER_LOGIN_SUCCESS:
             return {
+                ...state,
                 isLogin: true,
                 user: action.payload,
                 signUpDone: false,
-                signInError: null
+                signInError: {}
             }
 
         case constants.USER_LOGIN_ERROR:
@@ -41,7 +51,7 @@ export default function userReducer(state = initialState, action: UserAction) {
             return {
                 ...state,
                 signUpDone: true,
-                signUpError: null
+                signUpError: {}
             }
 
         case constants.USER_SIGN_UP_ERROR:
@@ -54,6 +64,7 @@ export default function userReducer(state = initialState, action: UserAction) {
         case constants.USER_LOGOUT:
             localStorage.removeItem('jwtToken');
             return {
+                ...state,
                 isLogin: false,
                 user: {}
             }
@@ -61,8 +72,8 @@ export default function userReducer(state = initialState, action: UserAction) {
         case constants.ERROR_CLEAR: 
             return {
                 ...state,
-                signInError: null,
-                signUpError: null
+                signInError: {},
+                signUpError: {}
             }
 
         default:

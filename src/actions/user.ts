@@ -67,10 +67,10 @@ export const userLoginError = (data: {}): UserLoginError => {
     }
 }
 
-export const userSignUpRequest = (): UserSignUpRequest => {
+export const userSignUpRequest = (data: {}): UserSignUpRequest => {
     return {
         type: constants.USER_SIGN_UP_REQUEST,
-        payload: {}
+        payload: data
     }
 }
 

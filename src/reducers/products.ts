@@ -1,13 +1,19 @@
 import { Action } from '../actions/products';
 import * as constants from '../constants/index';
 
-const initialState = {
+interface ProductState {
+    productList: [];
+    singleProduct: {};
+    searchValue: string
+}
+
+const initialState: ProductState = {
     productList: [],
-    singleProduct: null,
+    singleProduct: {},
     searchValue: ""
 };
 
-export default function productsReducer(state = initialState, action: Action) {
+export default function productsReducer(state = initialState, action: Action): ProductState {
     switch(action.type) {
         case constants.FETCH_PRODUCTS_REQUEST: 
             return {
@@ -28,7 +34,7 @@ export default function productsReducer(state = initialState, action: Action) {
         case constants.FETCH_SINGLE_PRODUCT_REQUEST:
             return { 
                 ...state,
-                singleProduct: null,
+                singleProduct: {},
             }
 
         case constants.FETCH_SINGLE_PRODUCT_SUCCESS:
