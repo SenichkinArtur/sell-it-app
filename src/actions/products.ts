@@ -1,88 +1,88 @@
 import * as constants from '../constants/index';
 
-interface fetchProductsRequest {
+interface FetchProductsRequest {
     type: typeof constants.FETCH_PRODUCTS_REQUEST;
 }
 
-interface fetchProductsSuccess {
+interface FetchProductsSuccess {
     type: typeof constants.FETCH_PRODUCTS_SUCCESS;
     payload: [];
 }
 
-interface fetchProductsError {
+interface FetchProductsError {
     type: typeof constants.FETCH_PRODUCTS_ERROR;
 }
 
-interface fetchSingleProductRequest {
+interface FetchSingleProductRequest {
     type: typeof constants.FETCH_SINGLE_PRODUCT_REQUEST;
     payload: number;
 }
 
-interface fetchSingleProductSuccess {
+interface FetchSingleProductSuccess {
     type: typeof constants.FETCH_SINGLE_PRODUCT_SUCCESS;
     payload: {};
 }
 
-interface fetchSingleProductError {
+interface FetchSingleProductError {
     type: typeof constants.FETCH_SINGLE_PRODUCT_ERROR;
 }
 
-interface searchValueChange {
+interface SearchValueChange {
     type: typeof constants.SEARCH_PRODUCTS_REQUEST;
     payload: string;
 }
 
-export type Action = fetchProductsRequest
-    | fetchProductsSuccess
-    | fetchProductsError
-    | fetchSingleProductRequest
-    | fetchSingleProductSuccess
-    | fetchSingleProductError
-    | searchValueChange;
+export type Action = FetchProductsRequest
+    | FetchProductsSuccess
+    | FetchProductsError
+    | FetchSingleProductRequest
+    | FetchSingleProductSuccess
+    | FetchSingleProductError
+    | SearchValueChange;
 
 
-export const fetchProducts = (): fetchProductsRequest => {
+export const fetchProducts = (): FetchProductsRequest => {
     return {
-        type: "FETCH_PRODUCTS_REQUEST"
+        type: constants.FETCH_PRODUCTS_REQUEST
     }
 }
 
-export const fetchProductsSuccess = (): fetchProductsSuccess => {
+export const fetchProductsSuccess = (): FetchProductsSuccess => {
     return {
-        type: "FETCH_PRODUCTS_SUCCESS",
+        type: constants.FETCH_PRODUCTS_SUCCESS,
         payload: []
     }
 }
 
-export const fetchProductsError = (): fetchProductsError => {
+export const fetchProductsError = (): FetchProductsError => {
     return {
-        type: "FETCH_PRODUCTS_ERROR"
+        type: constants.FETCH_PRODUCTS_ERROR
     }
 }
 
-export const fetchSingleProduct = (id: number): fetchSingleProductRequest => {
+export const fetchSingleProduct = (id: number): FetchSingleProductRequest => {
     return {
-        type: "FETCH_SINGLE_PRODUCT_REQUEST",
+        type: constants.FETCH_SINGLE_PRODUCT_REQUEST,
         payload: id
     }    
 }
 
-export const fetchSingleProductSuccess = (): fetchSingleProductSuccess => {
+export const fetchSingleProductSuccess = (): FetchSingleProductSuccess => {
     return {
-        type: "FETCH_SINGLE_PRODUCT_SUCCESS",
+        type: constants.FETCH_SINGLE_PRODUCT_SUCCESS,
         payload: {}
     }
 }
 
-export const fetchSingleProductError = (): fetchSingleProductError => {
+export const fetchSingleProductError = (): FetchSingleProductError => {
     return {
-        type: "FETCH_SINGLE_PRODUCT_ERROR"
+        type: constants.FETCH_SINGLE_PRODUCT_ERROR
     }
 }
 
-export const searchValueChange = (value: string): searchValueChange => {
+export const searchValueChange = (value: string): SearchValueChange => {
     return {
-        type: "SEARCH_PRODUCTS_REQUEST",
+        type: constants.SEARCH_PRODUCTS_REQUEST,
         payload: value
     }
 }
