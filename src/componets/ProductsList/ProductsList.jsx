@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styles from './ProductsList.module.css';
-import Header from '../Header/Header';
 import Product from './Product';
-import Footer from '../Footer/Footer';
 
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions/products';
@@ -20,6 +18,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 class ProductList extends Component {
 
+    state = {
+        errorTriggered: false,
+    }
+
     componentDidMount() {
         this.props.fetchProducts();
     }
@@ -36,21 +38,21 @@ class ProductList extends Component {
 
     render() {
         let { productList, searchValue } = this.props;
+        if (this.state.errorTriggered) {
+            throw new Error('Crashed');
+        }
         return (
-            <React.Fragment>
-                <Header />
-                <div className={styles.products + " flex-grow"}>
-                    <div className="container">
-                        <div className="row">
-                            {productList ?
-                                this.mapProducts(productList, searchValue)
-                                : null
-                            }
-                        </div>
+            <div className={styles.products + " flex-grow"}>
+                <div className="container">
+                    <button onClick={() => this.setState({ errorTriggered: true })} className={styles.error_trigger}>Error Trigger</button>
+                    <div className="row">
+                        {productList ?
+                            this.mapProducts(productList, searchValue)
+                            : null
+                        }
                     </div>
                 </div>
-                <Footer />
-            </React.Fragment>
+            </div>
         )
     }
 }

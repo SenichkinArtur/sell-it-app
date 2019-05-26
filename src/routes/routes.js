@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch, Redirect } from 'react-router'
 
-import ProductsList from "../componets/ProductsList/ProductsList";
+import MainPage from "../componets/MainPage/MainPage";
 import ProductPage from "../componets/ProductPage/ProductPage";
 import SignPage from "../componets/SignPage/SignPage";
 import UserPage from '../componets/UserPage/UserPage';
@@ -29,7 +29,7 @@ const PrivateRoute = ({ render: Component, ...rest }) => {
 
 const routes = () => (
     <Switch>
-        <Route exact path="/"component={ProductsList} />
+        <Route exact path="/"component={MainPage} />
         <Route path="/sign-in" render={ () => (<SignPage activeTab={"signin"} />) }/>
         <Route path="/sign-up" render={ () => (<SignPage activeTab={"signup"} />) }/>
         <Route path="/unauthorized-page" component={UnauthorizedPage} />        
