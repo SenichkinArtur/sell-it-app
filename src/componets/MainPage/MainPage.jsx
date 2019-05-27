@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import ProductList from '../ProductsList/ProductsList';
+import Products from '../../containers/Products';
 import ErrorBoundary from '../ErrorBoundaries/ErrorBoundary';
 
 const MainPage = () => {
@@ -9,7 +9,7 @@ const MainPage = () => {
         <React.Fragment>
             <Header />
             <ErrorBoundary>
-                <ProductList />
+                <Products />
             </ErrorBoundary>
             <Footer />
         </React.Fragment>
