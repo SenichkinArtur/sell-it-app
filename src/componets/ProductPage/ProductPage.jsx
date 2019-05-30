@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '../Header/Header';
+import Header from '../../containers/Header';
 import Footer from '../Footer/Footer';
 import productDefaultImg from '../../assets/images/product-default.jpg';
 import styles from './ProductPage.module.css';

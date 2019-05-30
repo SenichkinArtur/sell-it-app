@@ -1,17 +1,5 @@
 import React from 'react';
 import styles from './Search.module.css';
-import { connect } from 'react-redux';
-import { searchValueChange } from '../../../actions/products';
-
-const mapStateToProps = (state) => ({
-    searchValue: state.productsReducer.searchValue
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    searchValueChange: (event) => {
-        dispatch(searchValueChange(event.target.value));
-    }
-})
 
 const Search = ({ searchValue, searchValueChange }) => {
     return (
@@ -21,4 +9,4 @@ const Search = ({ searchValue, searchValueChange }) => {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default Search;

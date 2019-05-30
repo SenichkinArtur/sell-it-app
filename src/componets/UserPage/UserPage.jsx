@@ -1,6 +1,6 @@
 import React from 'react';
 import "./UserPage.module.css";
-import Header from '../Header/Header';
+import Header from '../../containers/Header';
 import Footer from '../Footer/Footer';
 import styles from './UserPage.module.css';
 import userPhotoDefault from '../../assets/images/user-photo.jpg';

@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../Header/Header';
+import Header from '../../containers/Header';
 import Footer from '../Footer/Footer';
 import Products from '../../containers/Products';
 import ErrorBoundary from '../ErrorBoundaries/ErrorBoundary';

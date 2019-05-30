@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import Header from '../componets/Header/Header';
+import Header from '../containers/Header';
 import Footer from '../componets/Footer/Footer'
 import NewProductForm from '../componets/NewProductForm/NewProductForm';
 

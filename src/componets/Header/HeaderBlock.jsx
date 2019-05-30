@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import UserBlock from './UserBlock/UserBlock';
 import Search from './Search/Search';
 
-import styles from './Header.module.css';
+import styles from './HeaderBlock.module.css';
 import logo from '../../assets/images/logo.png';
 
 
-const Header = () => {
+const HeaderBlock = ({ data }) => {
     return (
         <header className={styles.header}>
             <div className="container">
@@ -15,12 +15,19 @@ const Header = () => {
                     <div className={styles.logo + " col-lg-2 col-md-6"}>
                         <Link to="/"><img src={logo} alt="" /></Link>
                     </div>
-                    <Search />
-                    <UserBlock />
+                    <Search
+                        searchValue={data.searchValue}
+                        searchValueChange={data.searchValueChange}
+                    />
+                    <UserBlock 
+                        isLogin={data.isLogin}
+                        userInfo={data.userInfo}
+                        userLogout={data.userLogout}
+                    />
                 </div>
             </div>
         </header>
     )
 };
 
-export default Header;
+export default HeaderBlock;

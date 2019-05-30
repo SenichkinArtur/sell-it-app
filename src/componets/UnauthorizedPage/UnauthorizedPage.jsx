@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import styles from './UnauthorizedPage.module.css';
 import SignIn from '../SignPage/SignTabs/SignIn';
-import Header from '../Header/Header';
+import Header from '../../containers/Header';
 import Footer from '../Footer/Footer';
 import { userLogin } from '../../actions/user';
 
