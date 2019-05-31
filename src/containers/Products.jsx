@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductList from '../componets/ProductsList/ProductsList';
+import ProductList from '../components/ProductsList/ProductsList';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../actions/products';
 

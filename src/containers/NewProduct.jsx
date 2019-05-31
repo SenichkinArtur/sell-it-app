@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import Header from '../containers/Header';
-import Footer from '../componets/Footer/Footer'
-import NewProductForm from '../componets/NewProductForm/NewProductForm';
+import Footer from '../components/Footer/Footer'
+import NewProductForm from '../components/NewProductForm/NewProductForm';
 
 
 const mapStateToProps = (state) => ({

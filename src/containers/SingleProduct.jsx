@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { fetchSingleProduct } from '../actions/products';
-import ProductPage from '../componets/ProductPage/ProductPage';
+import ProductPage from '../components/ProductPage/ProductPage';
 
 
 const mapStateToProps = (state) => ({

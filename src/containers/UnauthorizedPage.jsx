@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import UnauthorizedBlock from '../componets/UnauthorizedBlock/UnauthorizedBlock';
+import UnauthorizedBlock from '../components/UnauthorizedBlock/UnauthorizedBlock';
 import Header from './Header';
-import Footer from '../componets/Footer/Footer';
+import Footer from '../components/Footer/Footer';
 import { userLogin } from '../actions/user';
 
 

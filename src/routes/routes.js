@@ -1,13 +1,13 @@
 import React from 'react'
 import { Route, Switch, Redirect } from 'react-router'
 
-import MainPage from "../componets/MainPage/MainPage";
+import MainPage from "../components/MainPage/MainPage";
 import SingleProduct from "../containers/SingleProduct";
 import Auth from "../containers/Auth";
-import UserPage from '../componets/UserPage/UserPage';
+import UserPage from '../components/UserPage/UserPage';
 import NewProduct from '../containers/NewProduct';
-import NotFound from '../componets/Errors/NotFound';
-import ServerError from '../componets/Errors/ServerError';
+import NotFound from '../components/Errors/NotFound';
+import ServerError from '../components/Errors/ServerError';
 import UnauthorizedPage from '../containers/UnauthorizedPage';
 
 import { store } from '../store/store';

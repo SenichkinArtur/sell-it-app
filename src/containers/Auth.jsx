@@ -2,8 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import SignPage from '../componets/SignPage/SignPage';
-import Footer from '../componets/Footer/Footer';
+import SignPage from '../components/SignPage/SignPage';
+import Footer from '../components/Footer/Footer';
 import { userLogin, userSignUp, errorClear } from '../actions/user';
 
 const mapStateToProps = (state) => ({

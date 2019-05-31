@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import HeaderBlock from '../componets/Header/HeaderBlock';
+import HeaderBlock from '../components/Header/HeaderBlock';
 import { searchValueChange } from '../actions/products';
 import { userLogout } from '../actions/user';
 
