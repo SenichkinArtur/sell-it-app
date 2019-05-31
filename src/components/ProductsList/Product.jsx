@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProductsList.module.css';
-import eyeIcon from '../../assets/images/eye.png';
 import productDefaultImg from '../../assets/images/product-default.jpg';
 
+import { MyContext } from '../MainPage/MainPage';
+
 const Product = ({data}) => {
+    const eyeIcon = useContext(MyContext);
     return (
         <div className={styles.products__item + " col-lg-3 col-md-6"}>
             <div className={styles.img_wrap}>
