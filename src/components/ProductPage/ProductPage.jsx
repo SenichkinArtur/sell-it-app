@@ -7,7 +7,6 @@ import styles from './ProductPage.module.css';
 
 
 const ProductPage = ({ singleProduct }) => {
-    
     return(
         <React.Fragment>
             <Header />
