@@ -16,7 +16,7 @@ const UserBlock = ({ isLogin, userInfo, userLogout }) => {
                     : 
                     <div className={styles.user_login}>
                         <Link to={`/userdetails/${userInfo.user_id}`} className={styles.user_login_link}>
-                            <img src={userInfo.userAvatar || userPhotoDefault} alt=""/>
+                            <img src={userInfo.avatar || userPhotoDefault} alt=""/>
                             <span>{userInfo.username || userInfo.email}</span>
                         </Link>
                         <div>

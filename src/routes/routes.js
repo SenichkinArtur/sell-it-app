@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router'
 import MainPage from "../components/MainPage/MainPage";
 import SingleProduct from "../containers/SingleProduct";
 import Auth from "../containers/Auth";
-import UserPage from '../components/UserPage/UserPage';
+import UserPage from '../containers/UserPage';
 import NewProduct from '../containers/NewProduct';
 import NotFound from '../components/Errors/NotFound';
 import ServerError from '../components/Errors/ServerError';
