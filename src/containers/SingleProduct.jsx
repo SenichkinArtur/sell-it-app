@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -17,21 +17,22 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-class SingleProduct extends Component {
+const SingleProduct = ({ fetchSingleProduct, productId, isLogin, singleProduct }) => {
 
-    componentDidMount() {
-        this.props.fetchSingleProduct(this.props.productId);
-    }
+    useEffect(() => {
+        async function fetchData() {
+            await fetchSingleProduct(productId);
+        }
+        fetchData();
+    }, [fetchSingleProduct, productId]);
+    
+    if (!isLogin) return <Redirect to='/' />
 
-    render() {
-        let { singleProduct, isLogin } = this.props;
-        if (!isLogin) return <Redirect to='/' />
-        return(
-            <ProductPage
-                singleProduct={singleProduct}
-            />
-        )
-    }
+    return(
+        <ProductPage
+            singleProduct={singleProduct}
+        />
+    )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct);
