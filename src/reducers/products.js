@@ -10,6 +10,7 @@ export default function productsReducer(state = initialState, action) {
             return {
                 ...state,
                 productList: [],
+                singleProduct: null
             }
 
         case "FETCH_PRODUCTS_SUCCESS": 
@@ -39,6 +40,12 @@ export default function productsReducer(state = initialState, action) {
         case "FETCH_SINGLE_PRODUCT_ERROR":
             return {
                 ...state,
+            }
+
+        case "CLEAR_SINGLE_PRODUCT_STATE":
+            return {
+                ...state,
+                singleProduct: null
             }
 
         case "SEARCH_PRODUCTS_REQUEST":

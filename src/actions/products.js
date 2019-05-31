@@ -17,3 +17,9 @@ export const searchValueChange = (value) => {
         payload: value
     }
 }
+
+export const clearSingleProductState = () => {
+    return {
+        type: "CLEAR_SINGLE_PRODUCT_STATE",
+    }
+}
