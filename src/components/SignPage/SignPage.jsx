@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import SignIn from './SignForms/SignIn';
-import SignUp from './SignForms/SignUp';
+import React, { Suspense } from 'react';
+import { Link } from 'react-router-dom';    
 import styles from './SignPage.module.css';
 import logo from "../../assets/images/logo-sign.png";
 
+const SignIn = React.lazy(() => import('./SignForms/SignIn'));
+const SignUp = React.lazy(() => import('./SignForms/SignUp'));
 
 const ErrorRender = ({ error }) => {
     let errorsArr = [];
@@ -25,7 +25,10 @@ const SignInBlock = (signUpDone, signInError, handleSignIn) => {
         <React.Fragment>
             {signUpDone ? <p className={styles.registration_done}>Registration done! Please login</p> : null}
             <ErrorRender error={signInError} />
-            <SignIn onSubmit={handleSignIn} />
+            <Suspense fallback={<div>Loading...</div>}>
+                <SignIn onSubmit={handleSignIn} />
+            </Suspense>
+            
         </React.Fragment>
     )
 }
@@ -34,7 +37,10 @@ const SignUpBlock = (signUpError, handleSignUp) => {
     return (
         <React.Fragment>
             <ErrorRender error={signUpError} />
-            <SignUp onSubmit={handleSignUp} />
+            <Suspense fallback={<div>Loading...</div>}>
+                <SignUp onSubmit={handleSignUp} />
+            </Suspense>
+            
         </React.Fragment>
     )
 }
