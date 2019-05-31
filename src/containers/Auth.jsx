@@ -51,9 +51,6 @@ const Auth = (props) => {
         <React.Fragment>
             <SignPage
                 activeTab={activeTab}
-                userLogin={userLogin}
-                userSignUp={userSignUp}
-                isLogin={isLogin}
                 signUpDone={signUpDone}
                 signInError={signInError}
                 signUpError={signUpError}

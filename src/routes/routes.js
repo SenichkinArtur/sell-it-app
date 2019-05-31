@@ -8,7 +8,7 @@ import UserPage from '../componets/UserPage/UserPage';
 import NewProduct from '../containers/NewProduct';
 import NotFound from '../componets/Errors/NotFound';
 import ServerError from '../componets/Errors/ServerError';
-import UnauthorizedPage from '../componets/UnauthorizedPage/UnauthorizedPage';
+import UnauthorizedPage from '../containers/UnauthorizedPage';
 
 import { store } from '../store/store';
 
