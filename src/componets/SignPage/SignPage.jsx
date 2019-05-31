@@ -1,32 +1,10 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import Footer from '../Footer/Footer';
-import SignIn from './SignTabs/SignIn';
-import SignUp from './SignTabs/SignUp';
+import { Link } from 'react-router-dom';
+import SignIn from './SignForms/SignIn';
+import SignUp from './SignForms/SignUp';
 import styles from './SignPage.module.css';
 import logo from "../../assets/images/logo-sign.png";
 
-import { connect } from 'react-redux';
-import { userLogin, userSignUp, errorClear } from '../../actions/user';
-
-const mapStateToProps = (state) => ({
-    isLogin: state.userReducer.isLogin,
-    signUpDone: state.userReducer.signUpDone,
-    signInError: state.userReducer.signInError,
-    signUpError: state.userReducer.signUpError
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    userLogin: (values) => {
-        dispatch(userLogin(values));
-    },
-    userSignUp: (values) => {
-        dispatch(userSignUp(values));
-    },
-    errorClear: () => {
-        dispatch(errorClear());
-    }
-});
 
 const ErrorRender = ({ error }) => {
     let errorsArr = [];
@@ -42,45 +20,60 @@ const ErrorRender = ({ error }) => {
     )
 }
 
-const SignPage = ({ activeTab, userLogin, userSignUp, isLogin, signUpDone, signInError, signUpError, errorClear }) => {
-    const handleSignIn = (values) => {
-        userLogin(values);
-    };
-
-    const handleSignUp = (values) => {
-        userSignUp(values);
-    };
-
-    if (isLogin) return <Redirect to='/' />;
-
+const SignInBlock = (signUpDone, signInError, handleSignIn) => {
     return (
         <React.Fragment>
-            <section className={styles.main}>
-                <div className={styles.sign_block_wrap}>
-                    <Link to="/"><img src={logo} alt="" /></Link>
-                    <div className={styles.tabs_select}>
-                        <Link to="/sign-in" className={`${styles.tabs_select__button} ${activeTab === "signin" ? styles.tabs_select__button_active : ""}`} onClick={ () => errorClear() }>Sign In</Link>
-                        <Link to="/sign-up" className={`${styles.tabs_select__button} ${activeTab === "signup" ? styles.tabs_select__button_active : ""}`} onClick={ () => errorClear() }>Sign Up</Link>
-                    </div>
-
-                    {activeTab === "signin" ?
-                        <React.Fragment>
-                            {signUpDone ? <p className={styles.registration_done}>Registration done! Please login</p> : null}
-                            <ErrorRender error={signInError} />
-                            <SignIn onSubmit={handleSignIn} />
-                        </React.Fragment> 
-                        :
-                        <React.Fragment>
-                            <ErrorRender error={signUpError} />
-                            <SignUp onSubmit={handleSignUp} />
-                        </React.Fragment>
-                    }
-
-                </div>
-            </section>
-            <Footer />
+            {signUpDone ? <p className={styles.registration_done}>Registration done! Please login</p> : null}
+            <ErrorRender error={signInError} />
+            <SignIn onSubmit={handleSignIn} />
         </React.Fragment>
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignPage);
+const SignUpBlock = (signUpError, handleSignUp) => {
+    return (
+        <React.Fragment>
+            <ErrorRender error={signUpError} />
+            <SignUp onSubmit={handleSignUp} />
+        </React.Fragment>
+    )
+}
+
+const SignPage = ({ activeTab, signUpDone, signInError, signUpError, errorClear, handleSignIn, handleSignUp }) => {
+
+    return (
+        <section className={styles.main}>
+            <div className={styles.sign_block_wrap}>
+                <Link to="/">
+                    <img src={logo} alt="" />
+                </Link>
+
+                <div className={styles.tabs_select}>
+                    <Link
+                        to="/sign-in"
+                        className={`${styles.tabs_select__button} ${activeTab === "signin" ? styles.tabs_select__button_active : ""}`}
+                        onClick={() => errorClear()}
+                    >
+                        Sign In
+                    </Link>
+
+                    <Link
+                        to="/sign-up"
+                        className={`${styles.tabs_select__button} ${activeTab === "signup" ? styles.tabs_select__button_active : ""}`}
+                        onClick={() => errorClear()}
+                    >
+                        Sign Up
+                    </Link>
+                </div>
+
+                {activeTab === "signin"
+                    ? SignInBlock(signUpDone, signInError, handleSignIn)
+                    : SignUpBlock(signUpError, handleSignUp)
+                }
+
+            </div>
+        </section>
+    )
+}
+
+export default SignPage;

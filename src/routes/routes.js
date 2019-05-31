@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router'
 
 import MainPage from "../componets/MainPage/MainPage";
 import SingleProduct from "../containers/SingleProduct";
-import SignPage from "../componets/SignPage/SignPage";
+import Auth from "../containers/Auth";
 import UserPage from '../componets/UserPage/UserPage';
 import NewProduct from '../containers/NewProduct';
 import NotFound from '../componets/Errors/NotFound';
@@ -30,8 +30,8 @@ const PrivateRoute = ({ render: Component, ...rest }) => {
 const routes = () => (
     <Switch>
         <Route exact path="/"component={MainPage} />
-        <Route path="/sign-in" render={ () => (<SignPage activeTab={"signin"} />) }/>
-        <Route path="/sign-up" render={ () => (<SignPage activeTab={"signup"} />) }/>
+        <Route path="/sign-in" render={ () => (<Auth activeTab={"signin"} />) }/>
+        <Route path="/sign-up" render={ () => (<Auth activeTab={"signup"} />) }/>
         <Route path="/unauthorized-page" component={UnauthorizedPage} />        
         <Route path="/not-found" component={NotFound} />
         <Route path="/server-error" component={ServerError} />
