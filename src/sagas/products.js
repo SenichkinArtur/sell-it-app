@@ -5,10 +5,10 @@ function* watchFetchProducts() {
     yield takeEvery("FETCH_PRODUCTS_REQUEST", fetchProducts);
 }
 
-function* fetchProducts() {
+function* fetchProducts(action) {
     try {
-        const result = yield getProducts();
-        yield put({type: "FETCH_PRODUCTS_SUCCESS", payload: result.data.data});
+        const result = yield getProducts(action.payload);
+        yield put({type: "FETCH_PRODUCTS_SUCCESS", payload: result.data});
     } catch(error) {
         yield put ({ type: "FETCH_PRODUCTS_ERROR", payload: error });
     }

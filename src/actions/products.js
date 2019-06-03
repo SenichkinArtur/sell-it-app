@@ -1,6 +1,7 @@
-export const fetchProducts = () => {
+export const fetchProducts = (page) => {
     return {
-        type: "FETCH_PRODUCTS_REQUEST"
+        type: "FETCH_PRODUCTS_REQUEST",
+        payload: page
     }
 }
 

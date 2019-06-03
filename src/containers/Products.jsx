@@ -9,8 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchProducts: () => {
-        dispatch(fetchProducts());
+    fetchProducts: (page) => {
+        dispatch(fetchProducts(page));
     }
 });
 
@@ -26,17 +26,20 @@ class Products extends Component {
 
     render() {
         let { productList, searchValue } = this.props;
-
         if (this.state.errorTriggered) {
             throw new Error('Crashed');
         }
         
         return (
-            <ProductList
-                productList={productList}
+            productList
+            ? <ProductList
+                productList={productList.data}
+                productsMeta={productList.meta}
                 searchValue={searchValue}
                 errorTrigger={() => this.setState({ errorTriggered: true })}
+                fetchProducts={this.props.fetchProducts}
             />
+            : null
         )
     }
 }

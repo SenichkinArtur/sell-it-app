@@ -1,7 +1,7 @@
 import { get } from './base';
 
-export function getProducts() {
-    return get('/posters/');
+export function getProducts(page = 1) {
+    return get('/posters/?page=' + page);
 }
 
 export function getSingleProduct(id) {

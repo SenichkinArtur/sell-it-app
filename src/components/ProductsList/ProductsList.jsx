@@ -1,8 +1,11 @@
 import React from 'react';
+import ReactPaginate from 'react-paginate';
+
 import styles from './ProductsList.module.css';
 import Product from './Product';
 
-const ProductList = ({ productList, searchValue, errorTrigger }) => {
+
+const ProductList = ({ productList, productsMeta, searchValue, errorTrigger, fetchProducts }) => {
 
     const mapProducts = (productList, searchValue) => {
         return productList.map((item) => {
@@ -12,6 +15,11 @@ const ProductList = ({ productList, searchValue, errorTrigger }) => {
                 : null
             )
         })
+    }
+
+    const handlePageClick = ({ selected }) => {
+        let currentPage = selected + 1;
+        fetchProducts(currentPage);
     }
 
     return (
@@ -25,6 +33,22 @@ const ProductList = ({ productList, searchValue, errorTrigger }) => {
                         : null
                     }
                 </div>
+                <ReactPaginate
+                    previousLabel={'Prev'}
+                    nextLabel={'Next'}
+                    breakLabel={'...'}
+                    breakClassName={'break-me'}
+                    pageCount={productsMeta ? productsMeta.total : 1}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={handlePageClick}
+                    containerClassName={styles.pagination}
+                    subContainerClassName={'pages pagination'}
+                    activeClassName={styles.pagination_active}
+                    previousClassName={styles.previous}
+                    nextClassName={styles.next}
+                    disabledClassName={styles.disabled}
+                />
             </div>
         </div>
     )
