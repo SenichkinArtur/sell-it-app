@@ -13,14 +13,14 @@ const renderField = ({ input, label, type }) => {
     )
 }
 
-let NewProduct = () => {
+let NewProduct = ({ handleSubmit }) => {
     
     return (
         <div className="flex-grow">
             <div className="container">
                 <div className="row">
                     <div className={styles.form_wrapper}>
-                        <form className={styles.form}>
+                        <form className={styles.form} onSubmit={handleSubmit}>
                             <Field name="theme" type="text" label="Theme" component={renderField}/>
                             <Field name="text" type="text" label="Text" component={renderField}/>
                             <Field name="price" type="number" label="Price" component={renderField}/>

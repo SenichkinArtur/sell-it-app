@@ -42,6 +42,37 @@ export default function productsReducer(state = initialState, action) {
                 ...state,
             }
 
+        case "ADD_PRODUCT_REQUEST": 
+            return {
+                ...state,
+            }
+
+        case "ADD_PRODUCT_SUCCESS": 
+            return {
+                ...state,
+            }
+
+        case "ADD_PRODUCT_ERROR": 
+            return {
+                ...state,
+            }
+
+
+        case "DELETE_PRODUCT_REQUEST": 
+            return {
+                ...state,
+            }
+
+        case "DELETE_PRODUCT_SUCCESS": 
+            return {
+                ...state,
+            }
+
+        case "DELETE_PRODUCT_ERROR": 
+            return {
+                ...state,
+            }
+
         case "CLEAR_SINGLE_PRODUCT_STATE":
             return {
                 ...state,

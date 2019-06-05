@@ -24,3 +24,17 @@ export const clearSingleProductState = () => {
         type: "CLEAR_SINGLE_PRODUCT_STATE",
     }
 }
+
+export const addProduct = (data) => {
+    return {
+        type: "ADD_PRODUCT_REQUEST",
+        payload: data
+    }
+}
+
+export const deleteProduct = (id) => {
+    return {
+        type: "DELETE_PRODUCT_REQUEST",
+        payload: id
+    }
+}
