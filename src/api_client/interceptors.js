@@ -4,10 +4,6 @@ export default {
     setupInterceptors: (store, history) => {
 
     axios.interceptors.response.use(response => {
-        if (response.status === 201) {
-            store.dispatch({ type: 'USER_SIGN_UP_SUCCESS' });
-            history.push('/sign-in');
-        }
         return response;
     }, error => {
         if (error.response.status === 401) {

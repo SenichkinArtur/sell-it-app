@@ -1,5 +1,5 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import { getProducts, getSingleProduct, getSearchProducts, addProduct, deleteProduct } from '../api_client/products';
+import { getProducts, getSingleProduct, getSearchProducts, addProduct, deleteProduct, fetchOwnProducts } from '../api_client/products';
                             
 function* watchFetchProducts() {
     yield takeEvery("FETCH_PRODUCTS_REQUEST", fetchProducts);
@@ -53,7 +53,7 @@ function* addProductWorker(action) {
         const headers = { Authorization: `JWT ${token}`};
         yield addProduct(action.payload, headers);
         yield put({ type: "ADD_PRODUCT_SUCCESS" });
-
+        yield put({ type: "FETCH_OWN_PRODUCTS_REQUEST" });
     } catch(error) {
         yield put ({ type: "ADD_PRODUCT_ERROR", payload: error });
     }
@@ -69,10 +69,25 @@ function* deleteProductWorker(action) {
         const token = yield localStorage.getItem('jwtToken');
         const headers = { Authorization: `JWT ${token}`};
         yield deleteProduct(action.payload, headers);
-        yield put({ type: "DELETE_PRODUCT_SUCCESS" });
-
+        yield put({ type: "DELETE_PRODUCT_SUCCESS", payload: action.payload });
     } catch(error) {
         yield put ({ type: "DELETE_PRODUCT_ERROR", payload: error });
+    }
+}
+
+
+function* watchFetchOwnProducts() {
+    yield takeEvery("FETCH_OWN_PRODUCTS_REQUEST", fetchOwnProductsWorker);
+}
+
+function* fetchOwnProductsWorker() {
+    try {
+        const token = yield localStorage.getItem('jwtToken');
+        const headers = { Authorization: `JWT ${token}`};
+        const result = yield fetchOwnProducts(headers);
+        yield put({type: "FETCH_OWN_PRODUCTS_SUCCESS", payload: result.data.data});
+    } catch(error) {
+        yield put ({ type: "FETCH_OWN_PRODUCTS_ERROR", payload: error });
     }
 }
 
@@ -82,5 +97,6 @@ export const productSagas = [
     watchFetchSingleProduct(),
     watchSearchProducts(),
     watchAddProduct(),
-    watchDeleteProduct()
+    watchDeleteProduct(),
+    watchFetchOwnProducts()
 ];

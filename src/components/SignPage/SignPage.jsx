@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Link } from 'react-router-dom';    
+import { Link, Redirect } from 'react-router-dom';    
 import styles from './SignPage.module.css';
 import logo from "../../assets/images/logo-sign.png";
 
@@ -46,6 +46,8 @@ const SignUpBlock = (signUpError, handleSignUp) => {
 }
 
 const SignPage = ({ activeTab, signUpDone, signInError, signUpError, errorClear, handleSignIn, handleSignUp }) => {
+
+    if (signUpDone && activeTab === "signup") return <Redirect to="/sign-in" />
 
     return (
         <section className={styles.main}>

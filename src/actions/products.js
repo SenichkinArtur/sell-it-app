@@ -38,3 +38,9 @@ export const deleteProduct = (id) => {
         payload: id
     }
 }
+
+export const fetchOwnProducts = () => {
+    return {
+        type: "FETCH_OWN_PRODUCTS_REQUEST"
+    }
+}

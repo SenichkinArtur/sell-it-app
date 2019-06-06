@@ -5,13 +5,17 @@ import productDefaultImg from '../../assets/images/product-default.jpg';
 
 import { MyContext } from '../MainPage/MainPage';
 
-const Product = ({data}) => {
+const Product = ({ data, deleteProduct }) => {
     const eyeIcon = useContext(MyContext);
     return (
         <div className={styles.products__item + " col-lg-3 col-md-6"}>
             <div className={styles.img_wrap}>
                 <img className={styles.products__img} src={data.images.length !== 0 ? data.images[0].file : productDefaultImg } alt="" />
             </div>
+            {deleteProduct 
+                ? <button onClick={() => deleteProduct(data.pk)}>delete</button>
+                : null
+            }
             <Link to={`/products/${data.pk}`} className={styles.products__info}>
                 <h5 className={styles.products__title}>{data.theme || 'Product Title'}</h5>
                 <img src={eyeIcon} alt="" />

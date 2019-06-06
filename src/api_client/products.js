@@ -18,4 +18,8 @@ export function addProduct(data, headers) {
 
 export const deleteProduct = (id, headers) => {
     return deleteRequest('/posters/' + id + '/', headers);
-};
+}
+
+export const fetchOwnProducts = (headers) => {
+    return get('/posters/own/', headers)
+}

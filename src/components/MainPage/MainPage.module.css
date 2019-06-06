@@ -1,0 +1,15 @@
+.manage_products {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.manage_products:hover {
+    text-decoration: none;
+}
+
+.manage_products button {
+    border: none;
+    background: #00b3be;
+    color: #fff;
+    padding: 5px 10px;
+}

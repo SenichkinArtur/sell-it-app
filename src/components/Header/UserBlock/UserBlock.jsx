@@ -7,7 +7,6 @@ import logoutIcon from '../../../assets/images/logout-icon.png';
 const UserBlock = ({ isLogin, userInfo, userLogout }) => {
     return (
         <React.Fragment>
-            <Link to="/new-product">Add new item</Link>
             <div className={styles.user_block}>
                 {!isLogin ?
                     <p className={styles.user_block__text}> 

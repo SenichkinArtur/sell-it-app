@@ -5,7 +5,7 @@ import MainPage from "../components/MainPage/MainPage";
 import SingleProduct from "../containers/SingleProduct";
 import Auth from "../containers/Auth";
 import UserPage from '../containers/UserPage';
-import NewProduct from '../containers/NewProduct';
+import ManageProducts from '../containers/ManageProducts';
 import NotFound from '../components/Errors/NotFound';
 import ServerError from '../components/Errors/ServerError';
 import UnauthorizedPage from '../containers/UnauthorizedPage';
@@ -35,7 +35,7 @@ const routes = () => (
         <Route path="/unauthorized-page" component={UnauthorizedPage} />        
         <Route path="/not-found" component={NotFound} />
         <Route path="/server-error" component={ServerError} />
-        <PrivateRoute path="/new-product" render={() => (<NewProduct />)}/>
+        <PrivateRoute path="/manage-products" render={() => (<ManageProducts />)}/>
         <PrivateRoute path="/products/:productId" render={({ match }) => (<SingleProduct productId={Number(match.params.productId)} />)} />
         <PrivateRoute path="/userdetails/:userId" render={({ match }) => (<UserPage userId={match.params.userId} />)} />
     </Switch>

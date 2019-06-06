@@ -1,5 +1,6 @@
 const initialState = {
     productList: [],
+    ownProductList: [],
     singleProduct: null,
     searchValue: ""
 };
@@ -64,11 +65,30 @@ export default function productsReducer(state = initialState, action) {
             }
 
         case "DELETE_PRODUCT_SUCCESS": 
+            let newArr = state.ownProductList.filter(item => item.pk !== action.payload);
+            return {
+                ...state,
+                ownProductList: newArr
+            }
+
+        case "DELETE_PRODUCT_ERROR": 
             return {
                 ...state,
             }
 
-        case "DELETE_PRODUCT_ERROR": 
+        case "FETCH_OWN_PRODUCTS_REQUEST": 
+            return {
+                ...state,
+                ownProductList: []
+            }
+
+        case "FETCH_OWN_PRODUCTS_SUCCESS": 
+            return {
+                ...state,
+                ownProductList: action.payload
+            }
+
+        case "FETCH_OWN_PRODUCTS_ERROR": 
             return {
                 ...state,
             }

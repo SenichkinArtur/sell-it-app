@@ -11,10 +11,11 @@ const request = ({ method, url, data, headers }) => {
     })    
 }
 
-export const get = (path) => {
+export const get = (path, headers) => {
     return request({
         method: 'GET',
-        url: BASE_URL + path 
+        url: BASE_URL + path,
+        headers
     });
 }
 
