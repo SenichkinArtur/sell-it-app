@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import styles from './ProductsList.module.css';
@@ -18,9 +18,12 @@ const ProductList = ({ productList, productsMeta, searchValue, errorTrigger, fet
         })
     }
 
+    const [activePage, setActivePage] = useState(0);
+
     const handlePageClick = ({ selected }) => {
         let currentPage = selected + 1;
         fetchProducts(currentPage);
+        setActivePage(selected);
     }
 
     return (
@@ -40,6 +43,7 @@ const ProductList = ({ productList, productsMeta, searchValue, errorTrigger, fet
                         breakLabel={'...'}
                         breakClassName={'break-me'}
                         pageCount={productsMeta ? productsMeta.total : 1}
+                        forcePage={activePage}
                         marginPagesDisplayed={2}
                         pageRangeDisplayed={5}
                         onPageChange={handlePageClick}
