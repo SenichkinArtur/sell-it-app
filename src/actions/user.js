@@ -23,3 +23,10 @@ export const errorClear = () => {
         type: "ERROR_CLEAR"
     }
 }
+
+export const updateUser = (data) => {
+    return {
+        type: "USER_UPDATE_REQUEST",
+        payload: data
+    }
+}

@@ -1,5 +1,5 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import { signIn, signUp } from '../api_client/user';
+import { signIn, signUp, updateUser } from '../api_client/user';
 import jwt from 'jsonwebtoken';
 
 function* watchUserLogin() {
@@ -31,4 +31,22 @@ function* userSignUp(action) {
     }
 }
 
-export const userSagas = [ watchUserLogin(), watchUserSignUp() ];
+
+function* watchUserUpdate() {
+    yield takeEvery("USER_UPDATE_REQUEST", userUpdateWorker);
+}
+
+function* userUpdateWorker(action) {
+    try {
+        const token = yield localStorage.getItem('jwtToken');
+        const headers = { Authorization: `JWT ${token}`};
+        // console.log(action.payload);
+        const result = yield updateUser(action.payload, headers);
+        // console.log(result);
+        yield put({ type: "USER_UPDATE_SUCCESS", payload: result.data });
+    } catch(error) {
+        yield put ({ type: "USER_UPDATE_ERROR", payload: error.response.data });
+    }
+}
+
+export const userSagas = [ watchUserLogin(), watchUserSignUp(), watchUserUpdate() ];

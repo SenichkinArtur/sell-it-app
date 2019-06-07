@@ -1,4 +1,4 @@
-import { post } from './base';
+import { post, patch } from './base';
 
 export function signIn(data) {
     return post('/login/', data);
@@ -6,4 +6,8 @@ export function signIn(data) {
 
 export function signUp(data) {
     return post('/registration/', data);
+}
+
+export const updateUser = (data, headers) => {
+    return patch('/profile/', data, headers);
 }

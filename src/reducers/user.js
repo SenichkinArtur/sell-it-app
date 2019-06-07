@@ -48,6 +48,23 @@ export default function userReducer(state = initialState, action) {
                 signUpError: action.payload
             }
 
+        case "USER_UPDATE_REQUEST":
+            return {
+                ...state,
+            }
+
+        case "USER_UPDATE_SUCCESS":
+
+            return {
+                ...state,
+                user: action.payload
+            }
+
+        case "USER_UPDATE_ERROR":
+            return {
+                ...state,
+            }
+
         case "USER_LOGOUT":
             localStorage.removeItem('jwtToken');
             return {
