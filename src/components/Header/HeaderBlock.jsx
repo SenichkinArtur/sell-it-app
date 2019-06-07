@@ -19,11 +19,14 @@ const HeaderBlock = ({ data }) => {
                         searchValue={data.searchValue}
                         searchValueChange={data.searchValueChange}
                     />
-                    <UserBlock 
-                        isLogin={data.isLogin}
-                        userInfo={data.userInfo}
-                        userLogout={data.userLogout}
-                    />
+                    {data.userInfo
+                        ? <UserBlock 
+                            isLogin={data.isLogin}
+                            userInfo={data.userInfo}
+                            userLogout={data.userLogout}
+                        />
+                        : null
+                    }
                 </div>
             </div>
         </header>

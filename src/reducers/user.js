@@ -47,6 +47,27 @@ export default function userReducer(state = initialState, action) {
                 signUpDone: false,
                 signUpError: action.payload
             }
+        
+        case "USER_INFO_REQUEST":
+            return {
+                ...state,
+            }
+        case "USER_INFO_SUCCESS":
+            let userInfo = {};
+            for(let key in action.payload) {
+                if(action.payload[key] !== null) {
+                    userInfo[key] = action.payload[key]
+                }
+            }
+            return {
+                ...state,
+                user: userInfo
+            }
+
+        case "USER_INFO_ERROR":
+            return {
+                ...state,
+            }
 
         case "USER_UPDATE_REQUEST":
             return {
@@ -54,7 +75,6 @@ export default function userReducer(state = initialState, action) {
             }
 
         case "USER_UPDATE_SUCCESS":
-
             return {
                 ...state,
                 user: action.payload

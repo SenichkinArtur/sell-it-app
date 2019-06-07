@@ -30,3 +30,9 @@ export const updateUser = (data) => {
         payload: data
     }
 }
+
+export const getUserInfo = () => {
+    return {
+        type: "USER_INFO_REQUEST"
+    }
+}
