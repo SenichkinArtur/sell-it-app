@@ -11,6 +11,7 @@ import { userLogin } from '../actions/user';
 const mapStateToProps = (state) => ({
     isLogin: state.userReducer.isLogin,
     signInError: state.userReducer.signInError,
+    isLoading: state.userReducer.isLoading
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const UnauthorizedPage = ({ userLogin, isLogin, location, signInError }) => {
+const UnauthorizedPage = ({ userLogin, isLogin, location, signInError, isLoading }) => {
     const handleSignIn = (values) => {
         userLogin(values);
     };
@@ -29,10 +30,15 @@ const UnauthorizedPage = ({ userLogin, isLogin, location, signInError }) => {
     return (
         <React.Fragment>
             <Header />
-            <UnauthorizedBlock
-                handleSignIn={handleSignIn}
-                signInError={signInError}
-            />
+            <div className='flex-grow'>
+                {!isLoading 
+                    ? <UnauthorizedBlock
+                        handleSignIn={handleSignIn}
+                        signInError={signInError}
+                    />
+                    : null
+                }
+            </div>
             <Footer />
         </React.Fragment>
     )

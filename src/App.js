@@ -17,6 +17,8 @@ if (localStorage.jwtToken) {
     .catch(() => {
         store.dispatch({type: 'USER_LOGOUT'});
     });
+} else {
+    store.dispatch({type: 'USER_LOGOUT'});
 }
 
 const App = () => {

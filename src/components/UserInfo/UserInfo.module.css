@@ -22,3 +22,17 @@
 .close:hover {
     cursor: pointer;
 }
+.profile_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    border: 1px solid #00b3be;
+    outline: none;
+    background: #f2f2f2;
+    height: 35px;
+    transition: .2s;
+}
+.profile_btn:hover {
+    background: #fff;
+}

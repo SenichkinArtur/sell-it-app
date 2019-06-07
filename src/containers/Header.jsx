@@ -8,7 +8,8 @@ import { userLogout } from '../actions/user';
 const mapStateToProps = (state) => ({
     searchValue: state.productsReducer.searchValue,
     isLogin: state.userReducer.isLogin,
-    userInfo: state.userReducer.user
+    userInfo: state.userReducer.user,
+    isLoading: state.userReducer.isLoading
 });
 
 const mapDispatchToProps = (dispatch) => ({

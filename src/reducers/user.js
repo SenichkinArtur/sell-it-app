@@ -3,19 +3,23 @@ const initialState = {
     signUpDone: false,
     user: {},
     signInError: null,
-    signUpError: null
+    signUpError: null,
+    isLoading: true
 };
 
 export default function userReducer(state = initialState, action) {
     switch(action.type) {
         case "USER_LOGIN_REQUEST":
             return {
+                ...state,
                 isLogin: false,
-                user: action.payload
+                user: action.payload,
+                isLoading: true
             }
 
         case "USER_LOGIN_SUCCESS":
             return {
+                ...state,
                 isLogin: true,
                 user: action.payload,
                 signUpDone: false,
@@ -51,6 +55,7 @@ export default function userReducer(state = initialState, action) {
         case "USER_INFO_REQUEST":
             return {
                 ...state,
+                isLoading: true
             }
         case "USER_INFO_SUCCESS":
             let userInfo = {};
@@ -61,7 +66,8 @@ export default function userReducer(state = initialState, action) {
             }
             return {
                 ...state,
-                user: userInfo
+                user: userInfo,
+                isLoading: false
             }
 
         case "USER_INFO_ERROR":
@@ -88,8 +94,10 @@ export default function userReducer(state = initialState, action) {
         case "USER_LOGOUT":
             localStorage.removeItem('jwtToken');
             return {
+                ...state,
                 isLogin: false,
-                user: {}
+                user: {},
+                isLoading: false
             }
             
         case "ERROR_CLEAR": 

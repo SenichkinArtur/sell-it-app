@@ -19,7 +19,7 @@ const HeaderBlock = ({ data }) => {
                         searchValue={data.searchValue}
                         searchValueChange={data.searchValueChange}
                     />
-                    {data.userInfo
+                    {data.userInfo && !data.isLoading
                         ? <UserBlock 
                             isLogin={data.isLogin}
                             userInfo={data.userInfo}
