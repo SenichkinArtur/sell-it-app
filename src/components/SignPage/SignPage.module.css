@@ -79,6 +79,18 @@
     font-weight: 500;
 }
 
+.auth_submit {
+    height: 35px;
+    width: 100%;
+    border: none;
+    background: #f2f2f2;
+    border: 1px solid #00b3be;
+    transition: .2s;
+}
+.auth_submit:hover {
+    background: #ffffff;
+}
+
 @media only screen and (max-width: 767px) {
     .main {
         justify-content: center;

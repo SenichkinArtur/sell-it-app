@@ -20,7 +20,7 @@ const SignIn = ({ handleSubmit }) => {
             <Field name="email" type="email" label="Email" component={renderField}/>
             <Field name="password" type="password" label="Password" component={renderField}/>
             <div>
-                <button type="submit">Submit</button>
+                <button className={styles.auth_submit} type="submit">Login</button>
             </div>
         </form>
     )

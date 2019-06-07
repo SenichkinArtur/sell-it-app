@@ -22,7 +22,7 @@ const SignUp = ({ handleSubmit }) => {
             <Field name="password1" type="password" label="Password" component={renderField}/>
             <Field name="password2" type="password" label="Confirm password" component={renderField}/>
             <div>
-                <button type="submit">Submit</button>
+                <button className={styles.auth_submit} type="submit">Register</button>
             </div>
         </form>
     )
