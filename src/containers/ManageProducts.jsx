@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import Header from './Header';
 import Footer from '../components/Footer/Footer'
 import ManageProductPage from '../components/ManageProductsPage/ManageProductsPage';
-import { addProduct, deleteProduct, fetchOwnProducts } from '../actions/products';
+import { addProduct, deleteProduct, fetchOwnProducts, updateProduct } from '../actions/products';
 
 const mapStateToProps = (state) => ({
     isLogin: state.userReducer.isLogin,
@@ -23,10 +23,22 @@ const mapDispatchToProps = (dispatch) => ({
     fetchOwnProducts: () => {
         dispatch(fetchOwnProducts());
     },
+    updateProduct: ({ id, data }) => {
+        dispatch(updateProduct({ id, data }));
+    }
 })
 
-let ManageProduct = ({ isLogin, addProduct, deleteProduct, ownProductsList, fetchOwnProducts, searchValue }) => {
-
+let ManageProduct = (props) => {
+    const {
+        isLogin,
+        addProduct,
+        deleteProduct,
+        ownProductsList,
+        fetchOwnProducts,
+        searchValue,
+        updateProduct
+    } = props;
+    
     useEffect(() => {
         fetchOwnProducts();
     }, [fetchOwnProducts]);
@@ -43,6 +55,7 @@ let ManageProduct = ({ isLogin, addProduct, deleteProduct, ownProductsList, fetc
                 ownProductsList={ownProductsList}
                 searchValue={searchValue}
                 fetchOwnProducts={fetchOwnProducts}
+                updateProduct={updateProduct}
             />
             <Footer />
         </React.Fragment>

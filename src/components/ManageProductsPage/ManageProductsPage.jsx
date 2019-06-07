@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
 
-import NewProductForm from '../NewProductForm/NewProductForm';
+import ProductForm from '../ProductForm/ProductForm';
 import ProductList from '../ProductsList/ProductsList';
 import styles from './ManageProductsPage.module.css';
 
-const ManageProductsPage = ({ isLogin, addProduct, deleteProduct, ownProductsList, searchValue }) => {
+const ManageProductsPage = ({ isLogin, addProduct, deleteProduct, ownProductsList, searchValue, updateProduct }) => {
 
     const [isOpenModal, setModal] = useState(false);
+
     const handleSubmit = (data) => {
         setModal(false);
         addProduct(data);
     }
+
     return (
         <React.Fragment>
             <h5>Your Products</h5>
@@ -26,7 +28,7 @@ const ManageProductsPage = ({ isLogin, addProduct, deleteProduct, ownProductsLis
                         &times;
                     </div>
                     <h5>New Product</h5>
-                    <NewProductForm isLogin={isLogin} onSubmit={handleSubmit}/>
+                    <ProductForm isLogin={isLogin} onSubmit={handleSubmit}/>
                 </React.Fragment>
             </Popup>
 
@@ -35,6 +37,7 @@ const ManageProductsPage = ({ isLogin, addProduct, deleteProduct, ownProductsLis
                     productList={ownProductsList}
                     searchValue={searchValue}
                     deleteProduct={deleteProduct}
+                    updateProduct={updateProduct}
                 />
                 : null
             }

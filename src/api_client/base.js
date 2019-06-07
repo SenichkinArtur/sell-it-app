@@ -35,3 +35,12 @@ export const deleteRequest = (path, headers) => {
         headers
     });
 };
+
+export const patch = (path, data, headers) => {
+    return request({
+        method: 'PATCH',
+        url: BASE_URL + path,
+        data,
+        headers
+    });
+}

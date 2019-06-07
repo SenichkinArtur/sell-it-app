@@ -1,20 +1,21 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import styles from './NewProductForm.module.css';
+import styles from './ProductForm.module.css';
 
 
 const renderField = ({ input, label, type }) => {
     return (
         <div>
             <label>{label}</label>
-            <input {...input} type={type}/>
+            <input {...input} type={type} />
         </div>
     )
 }
 
+
 let NewProduct = ({ handleSubmit }) => {
-    
+
     return (
         <div className="flex-grow">
             <div className="container">
@@ -24,9 +25,6 @@ let NewProduct = ({ handleSubmit }) => {
                             <Field name="theme" type="text" label="Theme" component={renderField}/>
                             <Field name="text" type="text" label="Text" component={renderField}/>
                             <Field name="price" type="number" label="Price" component={renderField}/>
-                            <Field name="currency" type="text" label="Currency" component={renderField}/>
-                            <Field name="contract_price" type="text" label="Contract Price" component={renderField}/>
-                            <Field name="location" type="text" label="Location" component={renderField}/>
                             <Field name="category" type="text" label="Category" component={renderField}/>
                             <input type="submit" value="Submit"/>
                         </form>
@@ -38,5 +36,5 @@ let NewProduct = ({ handleSubmit }) => {
 }
 
 export default reduxForm({
-    form: 'newProduct',
+    form: 'newProduct'
 })(NewProduct);

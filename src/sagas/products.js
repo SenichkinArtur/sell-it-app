@@ -1,5 +1,13 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import { getProducts, getSingleProduct, getSearchProducts, addProduct, deleteProduct, fetchOwnProducts } from '../api_client/products';
+import {
+    getProducts,
+    getSingleProduct,
+    getSearchProducts,
+    addProduct,
+    deleteProduct,
+    fetchOwnProducts,
+    updateProducts
+} from '../api_client/products';
                             
 function* watchFetchProducts() {
     yield takeEvery("FETCH_PRODUCTS_REQUEST", fetchProducts);
@@ -92,11 +100,29 @@ function* fetchOwnProductsWorker() {
 }
 
 
+function* watchUpdateProduct() {
+    yield takeEvery("UPDATE_PRODUCT_REQUEST", updateProductWorker);
+}
+
+function* updateProductWorker(action) {
+    try {
+        const token = yield localStorage.getItem('jwtToken');
+        const headers = { Authorization: `JWT ${token}`};
+        yield updateProducts(action.payload.id, action.payload.data, headers);
+        yield put({ type: "UPDATE_PRODUCT_SUCCESS" });
+        yield put({ type: "FETCH_OWN_PRODUCTS_REQUEST" });
+    } catch(error) {
+        yield put ({ type: "UPDATE_PRODUCT_ERROR", payload: error });
+    }
+}
+
+
 export const productSagas = [ 
     watchFetchProducts(),
     watchFetchSingleProduct(),
     watchSearchProducts(),
     watchAddProduct(),
     watchDeleteProduct(),
-    watchFetchOwnProducts()
+    watchFetchOwnProducts(),
+    watchUpdateProduct()
 ];

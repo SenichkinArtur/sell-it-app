@@ -76,6 +76,21 @@ export default function productsReducer(state = initialState, action) {
                 ...state,
             }
 
+        case "UPDATE_PRODUCT_REQUEST": 
+            return {
+                ...state,
+            }
+
+        case "UPDATE_PRODUCT_SUCCESS": 
+            return {
+                ...state,
+            }
+
+        case "UPDATE_PRODUCT_ERROR": 
+            return {
+                ...state,
+            }
+
         case "FETCH_OWN_PRODUCTS_REQUEST": 
             return {
                 ...state,

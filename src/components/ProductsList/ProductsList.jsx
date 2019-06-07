@@ -5,14 +5,19 @@ import styles from './ProductsList.module.css';
 import Product from './Product';
 
 
-const ProductList = ({ productList, productsMeta, searchValue, errorTrigger, fetchProducts, deleteProduct }) => {
+const ProductList = ({ productList, productsMeta, searchValue, errorTrigger, fetchProducts, deleteProduct, updateProduct }) => {
 
     const mapProducts = () => {
         return productList.map((item) => {
             
             return (
                 searchValue.length === 0 || (item.theme !== null && item.theme.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1) ?
-                    <Product data={item} key={item.pk} deleteProduct={deleteProduct} />
+                    <Product
+                        data={item}
+                        key={item.pk}
+                        deleteProduct={deleteProduct}
+                        updateProduct={updateProduct}
+                    />
                 : null
             )
         })

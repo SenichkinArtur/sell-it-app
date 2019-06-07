@@ -1,4 +1,4 @@
-import { get, post, deleteRequest } from './base';
+import { get, post, deleteRequest, patch } from './base';
 
 export function getProducts(page = 1) {
     return get('/posters/?page=' + page);
@@ -22,4 +22,8 @@ export const deleteProduct = (id, headers) => {
 
 export const fetchOwnProducts = (headers) => {
     return get('/posters/own/', headers)
+}
+
+export const updateProducts = (id, data, headers) => {
+    return patch('/posters/' + id + '/', data, headers)
 }

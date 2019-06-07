@@ -44,3 +44,10 @@ export const fetchOwnProducts = () => {
         type: "FETCH_OWN_PRODUCTS_REQUEST"
     }
 }
+
+export const updateProduct = (data) => {
+    return {
+        type: "UPDATE_PRODUCT_REQUEST",
+        payload: data
+    }
+}
