@@ -59,9 +59,8 @@ function* addProductWorker(action) {
     try {
         const token = yield localStorage.getItem('jwtToken');
         const headers = { Authorization: `JWT ${token}`};
-        yield addProduct(action.payload, headers);
-        yield put({ type: "ADD_PRODUCT_SUCCESS" });
-        yield put({ type: "FETCH_OWN_PRODUCTS_REQUEST" });
+        let result = yield addProduct(action.payload, headers);
+        yield put({ type: "ADD_PRODUCT_SUCCESS", payload: result.data });
     } catch(error) {
         yield put ({ type: "ADD_PRODUCT_ERROR", payload: error });
     }
@@ -108,9 +107,8 @@ function* updateProductWorker(action) {
     try {
         const token = yield localStorage.getItem('jwtToken');
         const headers = { Authorization: `JWT ${token}`};
-        yield updateProducts(action.payload.id, action.payload.data, headers);
-        yield put({ type: "UPDATE_PRODUCT_SUCCESS" });
-        yield put({ type: "FETCH_OWN_PRODUCTS_REQUEST" });
+        let result = yield updateProducts(action.payload.id, action.payload.data, headers);
+        yield put({ type: "UPDATE_PRODUCT_SUCCESS", payload: result.data });
     } catch(error) {
         yield put ({ type: "UPDATE_PRODUCT_ERROR", payload: error });
     }

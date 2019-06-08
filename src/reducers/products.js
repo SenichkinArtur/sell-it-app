@@ -49,8 +49,10 @@ export default function productsReducer(state = initialState, action) {
             }
 
         case "ADD_PRODUCT_SUCCESS": 
+            let newOwnProductList = state.ownProductList.concat(action.payload);
             return {
                 ...state,
+                ownProductList: newOwnProductList
             }
 
         case "ADD_PRODUCT_ERROR": 
@@ -81,9 +83,18 @@ export default function productsReducer(state = initialState, action) {
                 ...state,
             }
 
-        case "UPDATE_PRODUCT_SUCCESS": 
+        case "UPDATE_PRODUCT_SUCCESS":
+            let updatedProducts = [];
+            state.ownProductList.forEach(item => {
+                if (item.pk !== action.payload.pk) {
+                    updatedProducts.push(item);
+                } else {
+                    updatedProducts.push(action.payload);
+                }
+            });
             return {
                 ...state,
+                ownProductList: updatedProducts
             }
 
         case "UPDATE_PRODUCT_ERROR": 
